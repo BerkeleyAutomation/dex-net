@@ -30,7 +30,7 @@ body {
   font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	color: #232323;
-	background-color: #FBFAF7;
+	background-color: #FFFFFF;
 	margin: 0;
 	line-height: 1.8em;
 	-webkit-font-smoothing: antialiased;
@@ -39,7 +39,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color:#232323;
-  margin:36px 0 10px;
+  margin:5px 0 10px;
 }
 
 p, ul, ol, table, dl {
@@ -47,9 +47,8 @@ p, ul, ol, table, dl {
 }
 
 h1, h2, h3 {
-	font-family: Arvo, Monaco, serif;
+	font-family: "Helvetica Neue", sans-serif;
   line-height:1.3;
-	font-weight: normal;
 }
 
 h1,h2, h3 {
@@ -70,8 +69,21 @@ h3 {
 	font-size: 18px;
 }
 
+h4 {
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 14px;
+  font-style: italic;
+}
+
+h6 {
+  font-size: 10px;
+}
+
 h4, h5, h6 {
-	font-family: Arvo, Monaco, serif;
+	font-family: "Helvetica Neue", sans-serif;
 	font-weight: 700;
 }
 
@@ -192,7 +204,7 @@ table {
  }
 
 th {
-  font-family: 'Arvo', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	font-weight: normal;
   padding: 10px;
@@ -217,7 +229,7 @@ td {
 header {
 	background-color: #171717;
 	color: #FDFDFB;
-  width:170px;
+  width:160px;
   float:left;
   position:fixed;
 	border: 1px solid #000;
@@ -228,25 +240,41 @@ header {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	padding: 34px 25px 22px 50px;
-	margin: 30px 25px 0 0;
+	margin: 20px 10px 0 0;
 	-webkit-font-smoothing: antialiased;
 }
 
 p.header {
-	font-size: 16px;
+	font-size: 18px;
 }
 
 h1.header {
-	font-family: Arvo, sans-serif;
+	font-family: "Helvetica Neue", sans-serif;
 	font-size: 30px;
 	font-weight: 300;
 	line-height: 1.3em;
 	border-bottom: none;
 	margin-top: 0;
+  font-weight: bold;
 }
 
+h2.header {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  line-height: 1.3em;
+  margin-top: 0;
+  font-weight: bold;
+}
 
-h1.header, a.header, a.name, header a{
+h3.header {
+  border-bottom: none;
+}
+
+h3.header, h4.header, h5.header, h6.header {
+  font-weight: normal;
+}
+
+h1.header, h2.header, a.header, a.name, header a{
 	color: #fff;
 }
 
@@ -265,7 +293,7 @@ header ul {
 
 header li {
 	list-style-type: none;
-  width:132px;
+  width:148px;
   height:15px;
 	margin-bottom: 12px;
 	line-height: 1em;
@@ -295,15 +323,24 @@ header li:hover {
   background: -o-linear-gradient(top, #C3001D 0%,#950119 100%);
   background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
   background: linear-gradient(top, #C3001D 0%,#950119 100%);
+  color: #000000;
+}
+
+li.download {
+  box-shadow: 0 0 black;
+}
+
+li.download:hover {
+  box-shadow: 0 0 black;
+  color: #000000;
 }
 
 a.buttons {
 	-webkit-font-smoothing: antialiased;
-	background: url(../images/arrow-down.png) no-repeat;
-	font-weight: normal;
-	text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+	font-weight: bold;
 	padding: 2px 2px 2px 22px;
 	height: 30px;
+  color: #FFFFFF;
 }
 
 a.github {
@@ -311,7 +348,6 @@ a.github {
 }
 
 a.buttons:hover {
-	color: #fff;
 	text-decoration: none;
 }
 
@@ -321,7 +357,8 @@ a.buttons:hover {
 section {
   width:650px;
   float:right;
-  padding-bottom:50px;
+  padding-bottom:100px;
+  margin-top: 20px;
 }
 
 
@@ -400,7 +437,7 @@ footer {
 
 @media print, screen and (max-width: 480px) {
 
-  header ul li.download {
+  header ul {
     display:none;
   }
 
