@@ -58,13 +58,25 @@
       </html>
 
       <p>
-      The Dexterity Network (Dex-Net) is a dataset of thousands of 3D object models labeled with robotic parallel-jaw grasps, various metrics of grasp success, and point clouds to train machine learning-based methods for planning robot grasps.
-      The Dex-Net system contains tools to generate datasets for various physics-based grasp quality metrics, RGB-D sensors, and robot grippers.
+      The Dexterity Network (Dex-Net) is a research project including code, datasets, and algorithms for generating datasets of synthetic point clouds, robot parallel-jaw grasps and metrics of grasp robustness based on physics for thousands of 3D object models to train machine learning-based methods to plan robot grasps.
       The broader goal of the Dex-Net project is to develop highly reliable robot grasping across a wide variety of rigid objects such as tools, household items, packaged goods, and industrial parts.
       </p>
       <p>
-      <a href="#dexnet_2">Dex-Net 2.0</a> is designed for learning predictors of grasp success from point clouds to plan grasps on a physical robot and <a href="#dexnet_1">Dex-Net 1.0</a> was designed for learning predictors of grasp success for new 3D mesh models to accelerate generation of new datasets.
+      <a href="#dexnet_2">Dex-Net 2.0</a> is designed for learning Grasp Quality Convolutional Neural Network (GQ-CNN) models that predict the probability of success of candidate grasps on objects from point clouds.
+      GQ-CNNs may be useful for quickly planning grasps that can lift and transport a wide variety of objects a physical robot.
+      <a href="#dexnet_1">Dex-Net 1.0</a> was designed for learning predictors of grasp success for new 3D mesh models to accelerate generation of new datasets.
+      </p>
+      <p>
       The project was created by <a href="http://wwww.jeff-mahler.com">Jeff Mahler</a> and <a href="http://goldberg.berkeley.edu">Prof. Ken Goldberg</a> of the <a href="http://autolab.berkeley.edu/">Berkeley AUTOLAB</a>.
+      </p>
+
+      <h2 class="header" id="links" ><font color="black">Project Links</font></h2>
+      <p>
+      <ul>
+      <li> GQ-CNN Training Code: <a href="https://github.com/BerkeleyAutomation/gqcnn">https://github.com/BerkeleyAutomation/gqcnn</a> </li>
+      <li> Documentation for GQ-CNN Code: <a href="https://berkeleyautomation.github.io/gqcnn">https://berkeleyautomation.github.io/gqcnn</a> </li>
+      <li> Berkeley AUTOLAB: <a href="http://autolab.berkeley.edu">http://autolab.berkeley.edu</a> </li>
+      </ul>
       </p>
 
       </section>
