@@ -12,6 +12,16 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-101589905-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
     <div class="wrapper">
@@ -29,19 +39,19 @@
         <h2 class="header">Code</h2>
         <p class="header"></p>
         <ul>
-          <li class="download"><a class="buttons" href="https://github.com/BerkeleyAutomation/gqcnn">gqcnn Package</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/BerkeleyAutomation/gqcnn">gqcnn</a></li>
         </ul>
 
         <h2 class="header">Datasets</h2>
         <p class="header"></p>
         <ul>
-          <li class="download"><a class="buttons" href="https://berkeley.box.com/s/6mnb2bzi5zfa7qpwyn7uq5atb7vbztng">GQ-CNN Training</a></li>
+          <li class="download"><a class="buttons" href="http://bit.ly/2rIM7Jk">GQ-CNN Training</a></li>
         </ul>
 
         <h2 class="header">Models</h2>
         <p class="header"></p>
         <ul>
-          <li class="download"><a class="buttons" href="https://berkeley.box.com/s/szbchyt3tou9e4ct6dz8c5v99vhx0s84">GQ-CNN Weights</a></li>
+          <li class="download"><a class="buttons" href="http://bit.ly/2tAFMko">GQ-CNN Weights</a></li>
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/jeffmahler">Jeff Mahler</a> and <a class="header name" href="https://github.com/BerkeleyAutomation">BerkeleyAutomation</a>.</p>
@@ -58,13 +68,36 @@
       </html>
 
       <p>
-      The Dexterity Network (Dex-Net) is a dataset of thousands of 3D object models labeled with robotic parallel-jaw grasps, various metrics of grasp success, and point clouds to train machine learning-based methods for planning robot grasps.
-      The Dex-Net system contains tools to generate datasets for various physics-based grasp quality metrics, RGB-D sensors, and robot grippers.
+      The Dexterity Network (Dex-Net) is a research project including code, datasets, and algorithms for generating datasets of synthetic point clouds, robot parallel-jaw grasps and metrics of grasp robustness based on physics for thousands of 3D object models to train machine learning-based methods to plan robot grasps.
       The broader goal of the Dex-Net project is to develop highly reliable robot grasping across a wide variety of rigid objects such as tools, household items, packaged goods, and industrial parts.
       </p>
       <p>
-      <a href="#dexnet_2">Dex-Net 2.0</a> is designed for learning predictors of grasp success from point clouds to plan grasps on a physical robot and <a href="#dexnet_1">Dex-Net 1.0</a> was designed for learning predictors of grasp success for new 3D mesh models to accelerate generation of new datasets.
+      <a href="#dexnet_2">Dex-Net 2.0</a> is designed for learning Grasp Quality Convolutional Neural Network (GQ-CNN) models that predict the probability of success of candidate grasps on objects from point clouds.
+      GQ-CNNs may be useful for quickly planning grasps that can lift and transport a wide variety of objects a physical robot.
+      <a href="#dexnet_1">Dex-Net 1.0</a> was designed for learning predictors of grasp success for new 3D mesh models to accelerate generation of new datasets.
+      </p>
+      <p>
       The project was created by <a href="http://www.jeff-mahler.com">Jeff Mahler</a> and <a href="http://goldberg.berkeley.edu">Prof. Ken Goldberg</a> of the <a href="http://autolab.berkeley.edu/">Berkeley AUTOLAB</a>.
+      </p>
+
+      <h2 class="header" id="links" ><font color="black">Project Links</font></h2>
+      <p>
+      <ul>
+      <li> Dex-Net 2.0 Datasets: <a href="http://bit.ly/2rIM7Jk">link</a> </li>
+      <li> Trained GQ-CNN Models: <a href="http://bit.ly/2tAFMko">link</a> </li>
+      <li> GQ-CNN Training Code: <a href="https://github.com/BerkeleyAutomation/gqcnn">https://github.com/BerkeleyAutomation/gqcnn</a> </li>
+      <li> Documentation for GQ-CNN Code: <a href="https://berkeleyautomation.github.io/gqcnn">https://berkeleyautomation.github.io/gqcnn</a> </li>
+      <li> Berkeley AUTOLAB: <a href="http://autolab.berkeley.edu">http://autolab.berkeley.edu</a> </li>
+      </ul>
+      </p>
+
+      <h2 class="header" id="links" ><font color="black">News Coverage</font></h2>
+      <p>
+      <ul>
+      <li> <a href="https://www.wired.com/story/grasping-robot/">WIRED. June 19, 2017.</a> </li>
+      <li> <a href="https://www.technologyreview.com/s/607931/meet-the-most-nimble-fingered-robot-yet/?utm_campaign=add_this&utm_source=twitter&utm_medium=post">MIT Media Review. May 25, 2017.</a> </li>
+      <li> <a href="https://www.fastcompany.com/3066863/robot-revolution/why-its-so-hard-for-robots-to-get-a-grip">Fast Company. Jan 12, 2017.</a> </li>
+      </ul>
       </p>
 
       </section>
@@ -156,7 +189,7 @@
       <h2 class="header" id="contact"><font color="black">Contributors</font></h2>
 
       <p>This is an ongoing project at UC Berkeley with active contributions from:<br>
-      <a href="http://www.jeff-mahler.com">Jeff Mahler</a> and Vishal Satish, Alan Li, Jacky Liang, Xinyu Liu, Matt Matl, and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
+      <a href="http://www.jeff-mahler.com">Jeff Mahler</a>, Vishal Satish, Alan Li, Matt Matl, Jacky Liang, Xinyu Liu, and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
 
       <p>Past contributors include:<br>
       <a href="http://www.cs.berkeley.edu/~ftpokorny/">Florian Pokorny</a>, Brian Hou, Sherdil Niyaz, Melrose Roderkick, <a href="http://imagine.enpc.fr/~aubrym/index.html">Mathieu Aubry</a>, Michael Laskey, Richard Doan, Brenton Chu, Raul Puri, Sahanna Suri, Nikhil Sharma, and Josh Price.</p>
