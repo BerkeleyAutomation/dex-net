@@ -1,0 +1,1 @@
+This repository accompanies the ICRA 2016 submission "Dex-Net 1.0: A Cloud-Based Network of 3D Objects for Robust Grasp Planning Using a Multi-Armed Bandit Model with Correlated Rewards" which is currently under review.
