@@ -1,5 +1,6 @@
 # Berkeley AUTOLAB's Dex-Net Package
 
+## Links
 [Documentation](https://berkeleyautomation.github.io/dex-net/code.html)
 
 [Project website](https://berkeleyautomation.github.io/dex-net)
