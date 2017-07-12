@@ -53,7 +53,7 @@ gh-pages:
 	git checkout gh-pages && \
 	cd .. && \
 	git rm -rf . && git clean -fxd && \
-	git checkout release $(GH_PAGES_SOURCES) && \
+	git checkout master $(GH_PAGES_SOURCES) && \
 	git reset HEAD && \
 	cd docs && \
 	make html && \
@@ -66,7 +66,7 @@ gh-pages:
 	git commit -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`" && \
 	git push origin --delete gh-pages && \
 	git push origin gh-pages ; \
-	git checkout release
+	git checkout master
 
 .PHONY: html
 html:
