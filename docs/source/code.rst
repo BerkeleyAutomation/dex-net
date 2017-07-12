@@ -26,7 +26,7 @@ Links
 .. _Source Code: https://github.com/BerkeleyAutomation/dex-net
 .. _Dex-Net 2.0 HDF5 Database: http://bit.ly/2vb3OCz
 .. _Dex-Net Object Mesh Dataset v1.1 : http://bit.ly/2tLnRrQ
-.. _Dex-Net Website: https://berkeleyautomation.gitub.io/dex-net
+.. _Dex-Net Website: https://berkeleyautomation.github.io/dex-net
 .. _UC Berkeley AUTOLAB: http://autolab.berkeley.edu
 
 .. image:: images/dexnet.jpg
@@ -64,6 +64,8 @@ Active developers include:
 * Alan Li
 * Matt Matl
 * Vishal Satish
+* Jacky Liang
+* Xinyu Liu
 
 .. _Jeff Mahler: https://www.jeff-mahler.com
 
