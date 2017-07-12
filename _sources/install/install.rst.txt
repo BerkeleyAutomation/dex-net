@@ -21,15 +21,17 @@ Clone or download the project from `Github`_. ::
 """"""""""""""""""""""""""""""
 Run the `dex-net` installation helper script::
 
-  $sudo sh install.sh {cpu|gpu} {python|ros}
+  $ sudo sh install.sh {cpu|gpu} {python|ros}
 
 The brackets indicate optional arguments to switch installation methods.
 
 The first argument specifies the version:
+
 * **cpu:** no TensorFlow GPU support
 * **gpu:** TensorFlow GPU support for GQ-CNN training
 
 The second argument specifies the installation mode:
+
 * **python:** Python-only installation. No ROS services will be installed for `dex-net` or any of the Berkeley AUTOLAB modules.
 * **ros:** Installation as a ROS package. Enables ROS services for the Berkeley AUTOLAB modules and supports `dex-net` ROS nodes and services that may be developed in the future.
 
