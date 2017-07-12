@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation Instructions &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Download Link" href="../data/data.html"/>
+        <link rel="prev" title="Berkeley AUTOLAB’s Dex-Net Package" href="../code.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clone-the-repository">1. Clone the repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-installation-script">2. Run the installation script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-the-installation">3. Test the installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#try-it-out">4. Try it out!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-documentation">Deploying Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/tools.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">DexNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/database.html">database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/learning.html">learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/visualization.html">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>Installation Instructions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/install/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-instructions">
+<h1>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>dex-net</cite> package can be installed as a standalone Python module or a ROS package.
+We suggest installing as a standalone Python module unless you want to use <cite>dex-net</cite> to attempt to plan grasps for a physical robot.</p>
+<p>Installation has been tested on Ubuntu 12.04 LTS, Ubuntu 14.04 LTS, and Ubuntu 16.04 LTS. We do not recommend using <cite>dex-net</cite> with anaconda, as there are  known issues with the installation of the visualization tools in conda envrionments.</p>
+<div class="section" id="clone-the-repository">
+<h2>1. Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>Change directories to the desired install location of <cite>dex-net</cite>. If you are installing as a ROS package, this should be /path/to/your/catkin_ws</p>
+<p>Clone or download the project from <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net">Github</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/BerkeleyAutomation/dex-net.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-installation-script">
+<h2>2. Run the installation script<a class="headerlink" href="#run-the-installation-script" title="Permalink to this headline">¶</a></h2>
+<p>Run the <cite>dex-net</cite> installation helper script:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$sudo sh install.sh {cpu|gpu} {python|ros}
+</pre></div>
+</div>
+<p>The brackets indicate optional arguments to switch installation methods.</p>
+<p>The first argument specifies the version:
+* <strong>cpu:</strong> no TensorFlow GPU support
+* <strong>gpu:</strong> TensorFlow GPU support for GQ-CNN training</p>
+<p>The second argument specifies the installation mode:
+* <strong>python:</strong> Python-only installation. No ROS services will be installed for <cite>dex-net</cite> or any of the Berkeley AUTOLAB modules.
+* <strong>ros:</strong> Installation as a ROS package. Enables ROS services for the Berkeley AUTOLAB modules and supports <cite>dex-net</cite> ROS nodes and services that may be developed in the future.</p>
+</div>
+<div class="section" id="test-the-installation">
+<h2>3. Test the installation<a class="headerlink" href="#test-the-installation" title="Permalink to this headline">¶</a></h2>
+<p>To test your installation, run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python setup.py test
+</pre></div>
+</div>
+<p>We highly recommend testing before using the module.</p>
+</div>
+<div class="section" id="try-it-out">
+<h2>4. Try it out!<a class="headerlink" href="#try-it-out" title="Permalink to this headline">¶</a></h2>
+<p>Go the <cite>dex-net</cite> <a class="reference external" href="http://bit.ly/2uPEliy">Command Line Interface (CLI) example</a> to see the basic functionality.</p>
+</div>
+</div>
+<div class="section" id="issues">
+<h1>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h1>
+<p>If you are having issues with the installation script, then you should try to install manually by following our <a class="reference external" href="https://docs.google.com/document/d/1YImq1cBTy9E1n1On6-00gueDT4hfmYJK4uOcxZIzPoY/edit?usp=sharing">extended installation instructions</a>, which include individual commands, optional dependencies, and workarounds for some known issues.</p>
+<p>Please raise installation issues on the <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/issues">Github Issues</a>.</p>
+</div>
+<div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<p>The API documentation is available on the <cite>dex-net</cite> <a class="reference external" href="https://berkeleyautomation.github.io/dex-net/code.html">website</a>.</p>
+<p>You can build <cite>dex-net</cite>’s documentation from scratch with a few extra dependencies –
+specifically, <a class="reference external" href="http://www.sphinx-doc.org/en/1.4.8/">sphinx</a> and a few plugins. This is important for developers only.</p>
+<p>Go to the <cite>docs</cite> directory and run <code class="docutils literal"><span class="pre">make</span></code> with the appropriate target.
+For example,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd docs/
+$ make html
+</pre></div>
+</div>
+<p>will generate a set of web pages. Any documentation files
+generated in this manner can be found in <cite>docs/build</cite>.</p>
+</div>
+<div class="section" id="deploying-documentation">
+<h2>Deploying Documentation<a class="headerlink" href="#deploying-documentation" title="Permalink to this headline">¶</a></h2>
+<p>To deploy documentation to the Github Pages site for the repository,
+simply push any changes to the documentation source to master
+and then run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ . gh_deploy.sh
+</pre></div>
+</div>
+<p>from the <cite>docs</cite> folder. This script will automatically checkout the
+<code class="docutils literal"><span class="pre">gh-pages</span></code> branch, build the documentation from source, and push it
+to Github.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data/data.html" class="btn btn-neutral float-right" title="Download Link" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../code.html" class="btn btn-neutral" title="Berkeley AUTOLAB’s Dex-Net Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Examples" href="../scripts/examples.html"/>
+        <link rel="prev" title="Download Link" href="../data/data.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#documentation">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-python-scripts">Running Python Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#point-cloud-dataset-generation">Point Cloud Dataset Generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-openrave">Install OpenRAVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-example-database">Download the Example Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-the-configuration-file">Check the Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-python-script">Run the Python Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-the-dataset">Visualize the Dataset</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/tools.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">DexNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/database.html">database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/learning.html">learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/visualization.html">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The tutorial covers the two main use cases of the <cite>dex-net</cite> package:</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#database-manipulation"><span class="std std-ref">Database Manipulation</span></a> through the <cite>dex-net</cite> Command Line Interface (CLI).</li>
+<li><a class="reference internal" href="#point-cloud-dataset-generation"><span class="std std-ref">Point Cloud Dataset Generation</span></a> for training GQ-CNNs on new datasets of object models.</li>
+</ol>
+<p>Click on the links or scroll down to get started!</p>
+<div class="section" id="running-python-scripts">
+<h2>Running Python Scripts<a class="headerlink" href="#running-python-scripts" title="Permalink to this headline">¶</a></h2>
+<p>For best performance, we recommend running all scripts from the <cite>dex-net</cite> root directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">dex</span><span class="o">-</span><span class="n">net</span>
+<span class="n">python</span> <span class="n">apps</span><span class="o">/</span><span class="n">dexnet_cli</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="database-manipulation">
+<span id="id1"></span><h1>Database Manipulation<a class="headerlink" href="#database-manipulation" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://bit.ly/2uPEliy">tutorial</a> walks through the Dex-Net Command Line Interface <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/blob/master/apps/dexnet_cli.py">dexnet_cli.py</a> which is included in the <cite>dex-net</cite> repository under the apps/ directory.
+The Dex-Net CLI includes functionality for opening, reading, and writing HDF5 databases of 3D object models, parallel-jaw grasps, and grasp robustness metrics.
+The tutorial is hosted <a class="reference external" href="http://bit.ly/2uPEliy">here</a>.</p>
+</div>
+<div class="section" id="point-cloud-dataset-generation">
+<span id="id2"></span><h1>Point Cloud Dataset Generation<a class="headerlink" href="#point-cloud-dataset-generation" title="Permalink to this headline">¶</a></h1>
+<p>Robust grasping policies based on <a class="reference external" href="https://berkeleyautomation.github.io/gqcnn">Grasp Quality Convolutional Neural Networks</a> (GQ-CNNs) may be useful for planning grasps on novel objects with a physical robot.
+This requires training GQ-CNNs on a dataset of synthetic point clouds, grasps, and grasp robustness metrics such as the <a class="reference external" href="http://bit.ly/2rIM7Jk">Dex-Net 2.0 dataset</a>.</p>
+<p>It may be beneficial to train GQ-CNNs on custom robot grippers and datasets of 3D object models based on the application. To facilitate research on this topic, <cite>dex-net</cite> contains the script <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/blob/master/tools/generate_gqcnn_dataset.py">generate_gqcnn_dataset.py</a> under the tools/ directory.
+This tutorial explains how to use this tool.</p>
+<div class="section" id="install-openrave">
+<h2>Install OpenRAVE<a class="headerlink" href="#install-openrave" title="Permalink to this headline">¶</a></h2>
+<p>Dataset generation currently requires <a class="reference external" href="https://github.com/jeffmahler/openrave">OpenRAVE</a> for collision checking. Install our fork of OpenRAVE 0.9 by running the following from a command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd /path/to/your/dexnet/deps
+$ git clone https://github.com/jeffmahler/openrave.git
+$ cd openrave
+$ sudo sh install.sh
+$ cd ../..
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-the-example-database">
+<h2>Download the Example Database<a class="headerlink" href="#download-the-example-database" title="Permalink to this headline">¶</a></h2>
+<p>Download the <a class="reference external" href="http://bit.ly/2tGPXWz">example HDF5 database</a> containing the adversarial training objects to a location of your choosing.
+Throughout the tutorial we will refer to the location as /path/to/your/example.hdf5</p>
+</div>
+<div class="section" id="check-the-configuration-file">
+<h2>Check the Configuration File<a class="headerlink" href="#check-the-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>The point cloud dataset generation script has a number of <a class="reference external" href="../scripts/tools.html">parameters</a> specifying the database, object models to use, robot gripper, and camera parameters.
+At minimum you will need to update the <cite>database_name</cite> parameter of your configuration file (ex. <cite>/path/to/your/dex-net/cfg/tools/generate_gqcnn_dataset.yaml</cite>) to point to the example database:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">database_name</span><span class="p">:</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">hdf5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-python-script">
+<h2>Run the Python Script<a class="headerlink" href="#run-the-python-script" title="Permalink to this headline">¶</a></h2>
+<p>Choose a location for the dataset, such as /path/to/your/gqcnn_dataset
+Then run the following out of the root of your <cite>dex-net</cite> repo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python tools/generate_gqcnn_dataset.py /path/to/your/gqcnn_dataset
+</pre></div>
+</div>
+<p>The script proceeds in two stages: (1) checking collisions and (2) associating grasps with location in synthetic rendered point clouds. Execution may take tens of minutes for the default configuration and example database.</p>
+</div>
+<div class="section" id="visualize-the-dataset">
+<h2>Visualize the Dataset<a class="headerlink" href="#visualize-the-dataset" title="Permalink to this headline">¶</a></h2>
+<p>If the dataset generation script successfully finishes, then you can visualize point clouds from the resulting dataset using the script <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/blob/master/tools/visualize_gqcnn_dataset.py">visualize_gqcnn_dataset.py</a> under the tools/ directory.</p>
+<p>The point cloud dataset generation script has a few <a class="reference external" href="../scripts/tools.html">parameters</a> that can filter the dataset by positive or negative examples, specified in <cite>/path/to/your/dex-net/cfg/tools/visualize_gqcnn_dataset.yaml</cite>.
+We strongly recommend using the defaults, which will visualize positive examples.</p>
+<p>Run the following from a command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python tools/generate_gqcnn_dataset.py /path/to/your/gqcnn_dataset
+</pre></div>
+</div>
+<p>You should see images similar to:</p>
+<a class="reference internal image-reference" href="../_images/visualize_dataset_example.jpg"><img alt="../_images/visualize_dataset_example.jpg" class="align-center" src="../_images/visualize_dataset_example.jpg" style="width: 800.0px; height: 800.0px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../scripts/examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../data/data.html" class="btn btn-neutral" title="Download Link" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

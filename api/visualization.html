@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>visualization &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="prev" title="learning" href="learning.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#documentation">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/tools.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">DexNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning.html">learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/visualization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualization">
+<h1>visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h1>
+<p>Classes for visualizing grasps and 3D models, extending the Berkeley AUTOLAB <cite>visualization</cite> module.</p>
+<span class="target" id="module-dexnet.visualization"></span><dl class="class">
+<dt id="dexnet.visualization.DexNetVisualizer2D">
+<em class="property">class </em><code class="descclassname">dexnet.visualization.</code><code class="descname">DexNetVisualizer2D</code><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dex-Net extension of the base pyplot 2D visualization tools</p>
+<dl class="staticmethod">
+<dt id="dexnet.visualization.DexNetVisualizer2D.grasp">
+<em class="property">static </em><code class="descname">grasp</code><span class="sig-paren">(</span><em>grasp</em>, <em>color=’r’</em>, <em>arrow_len=4</em>, <em>arrow_head_len=2</em>, <em>arrow_head_width=3</em>, <em>arrow_width=1</em>, <em>jaw_len=3</em>, <em>jaw_width=3.0</em>, <em>grasp_center_size=7.5</em>, <em>grasp_center_thickness=2.5</em>, <em>grasp_center_style=’+’</em>, <em>grasp_axis_width=1</em>, <em>grasp_axis_style=’–’</em>, <em>line_width=8.0</em>, <em>show_center=True</em>, <em>show_axis=False</em>, <em>scale=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer2D.grasp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a 2D grasp with arrow and jaw style using matplotlib</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>grasp</strong> (<code class="xref py py-obj docutils literal"><span class="pre">Grasp2D</span></code>) – 2D grasp to plot</li>
+<li><strong>color</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – color of plotted grasp</li>
+<li><strong>arrow_len</strong> (<em>float</em>) – length of arrow body</li>
+<li><strong>arrow_head_len</strong> (<em>float</em>) – length of arrow head</li>
+<li><strong>arrow_head_width</strong> (<em>float</em>) – width of arrow head</li>
+<li><strong>arrow_width</strong> (<em>float</em>) – width of arrow body</li>
+<li><strong>jaw_len</strong> (<em>float</em>) – length of jaw line</li>
+<li><strong>jaw_width</strong> (<em>float</em>) – line width of jaw line</li>
+<li><strong>grasp_center_thickness</strong> (<em>float</em>) – thickness of grasp center</li>
+<li><strong>grasp_center_style</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – style of center of grasp</li>
+<li><strong>grasp_axis_width</strong> (<em>float</em>) – line width of grasp axis</li>
+<li><strong>grasp_axis_style</strong> (:obj:<a href="#id1"><span class="problematic" id="id2">`</span></a>str) – style of grasp axis line</li>
+<li><strong>show_center</strong> (<em>bool</em>) – whether or not to plot the grasp center</li>
+<li><strong>show_axis</strong> (<em>bool</em>) – whether or not to plot the grasp axis</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dexnet.visualization.DexNetVisualizer3D">
+<em class="property">class </em><code class="descclassname">dexnet.visualization.</code><code class="descname">DexNetVisualizer3D</code><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dex-Net extension of the base Mayavi-based 3D visualization tools</p>
+<dl class="staticmethod">
+<dt id="dexnet.visualization.DexNetVisualizer3D.grasp">
+<em class="property">static </em><code class="descname">grasp</code><span class="sig-paren">(</span><em>grasp, T_obj_world=RigidTransform(rotation=[[ 1.  0.  0.]  [ 0.  1.  0.]  [ 0.  0.  1.]], translation=[ 0.  0.  0.], from_frame=obj, to_frame=world), tube_radius=0.002, endpoint_color=(0, 1, 0), endpoint_scale=0.004, grasp_axis_color=(0, 1, 0)</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer3D.grasp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a grasp as an axis and center.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>grasp</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.Grasp" title="dexnet.grasping.Grasp"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.Grasp</span></code></a>) – the grasp to plot</li>
+<li><strong>T_obj_world</strong> (<code class="xref py py-obj docutils literal"><span class="pre">autolab_core.RigidTransform</span></code>) – the pose of the object that the grasp is referencing in world frame</li>
+<li><strong>tube_radius</strong> (<em>float</em>) – radius of the plotted grasp axis</li>
+<li><strong>endpoint_color</strong> (<em>3-tuple</em>) – color of the endpoints of the grasp axis</li>
+<li><strong>endpoint_scale</strong> (<em>3-tuple</em>) – scale of the plotted endpoints</li>
+<li><strong>grasp_axis_color</strong> (<em>3-tuple</em>) – color of the grasp axis</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.visualization.DexNetVisualizer3D.gripper">
+<em class="property">static </em><code class="descname">gripper</code><span class="sig-paren">(</span><em>gripper</em>, <em>grasp</em>, <em>T_obj_world</em>, <em>color=(0.5</em>, <em>0.5</em>, <em>0.5)</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer3D.gripper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a robotic gripper in a pose specified by a particular grasp object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>gripper</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.RobotGripper" title="dexnet.grasping.RobotGripper"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.RobotGripper</span></code></a>) – the gripper to plot</li>
+<li><strong>grasp</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.Grasp" title="dexnet.grasping.Grasp"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.Grasp</span></code></a>) – the grasp to plot the gripper performing</li>
+<li><strong>T_obj_world</strong> (<code class="xref py py-obj docutils literal"><span class="pre">autolab_core.RigidTransform</span></code>) – the pose of the object that the grasp is referencing in world frame</li>
+<li><strong>color</strong> (<em>3-tuple</em>) – color of the gripper mesh</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.visualization.DexNetVisualizer3D.gripper_on_object">
+<em class="property">static </em><code class="descname">gripper_on_object</code><span class="sig-paren">(</span><em>gripper, grasp, obj, stable_pose=None, T_table_world=RigidTransform(rotation=[[ 1.  0.  0.]  [ 0.  1.  0.]  [ 0.  0.  1.]], translation=[ 0.  0.  0.], from_frame=table, to_frame=world), gripper_color=(0.5, 0.5, 0.5), object_color=(0.5, 0.5, 0.5), style=’surface’, plot_table=True, table_dim=0.15</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.visualization.DexNetVisualizer3D.gripper_on_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualize a gripper on an object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>gripper</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.RobotGripper" title="dexnet.grasping.RobotGripper"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.RobotGripper</span></code></a>) – gripper to plot</li>
+<li><strong>grasp</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.Grasp" title="dexnet.grasping.Grasp"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.Grasp</span></code></a>) – grasp to plot the gripper in</li>
+<li><strong>obj</strong> (<a class="reference internal" href="grasping.html#dexnet.grasping.GraspableObject3D" title="dexnet.grasping.GraspableObject3D"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.GraspableObject3D</span></code></a>) – 3D object to plot the gripper on</li>
+<li><strong>stable_pose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">meshpy.StablePose</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">autolab_core.RigidTransform</span></code>) – stable pose of the object on a planar worksurface</li>
+<li><strong>T_table_world</strong> (<code class="xref py py-obj docutils literal"><span class="pre">autolab_core.RigidTransform</span></code>) – pose of table, specified as a transformation from mesh frame to world frame</li>
+<li><strong>gripper_color</strong> (<em>3-tuple</em>) – color of the gripper mesh</li>
+<li><strong>object_color</strong> (<em>3-tuple</em>) – color of the object mesh</li>
+<li><strong>style</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – color of the object mesh</li>
+<li><strong>plot_table</strong> (<em>bool</em>) – whether or not to plot the table</li>
+<li><strong>table_dim</strong> (<em>float</em>) – dimension of the table</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="learning.html" class="btn btn-neutral" title="learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
