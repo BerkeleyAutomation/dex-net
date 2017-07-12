@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>database &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="grasping" href="grasping.html"/>
+        <link rel="prev" title="DexNet" href="api.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#deploying-documentation">Deploying Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/tools.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">DexNet</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hdf5database">Hdf5Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hdf5dataset">Hdf5Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hdf5objectfactory">Hdf5ObjectFactory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meshprocessor">MeshProcessor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning.html">learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>database</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/database.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="database">
+<h1>database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<p>Classes for access and storage of 3D models, images, grasps, and grasp quality metrics from Dex-Net.</p>
+<div class="section" id="hdf5database">
+<h2>Hdf5Database<a class="headerlink" href="#hdf5database" title="Permalink to this headline">¶</a></h2>
+<p>A wrapper for opening h5py databases that store datasets of 3D object models, parallel-jaw grasps, and grasp metrics.</p>
+<dl class="class">
+<dt id="dexnet.database.Hdf5Database">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5Database</code><span class="sig-paren">(</span><em>database_filename</em>, <em>access_level=’READ_ONLY’</em>, <em>cache_dir=’.dexnet’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for HDF5 databases with h5py.</p>
+<dl class="attribute">
+<dt id="Hdf5Database.database_filename">
+<code class="descname">database_filename</code><a class="headerlink" href="#Hdf5Database.database_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – filenaame of HDF5 database, must have extension .hdf5</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Database.access_level">
+<code class="descname">access_level</code><a class="headerlink" href="#Hdf5Database.access_level" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – level of access, READ_ONLY versus READ_WRITE versus WRITE, for the database</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Database.cache_dir">
+<code class="descname">cache_dir</code><a class="headerlink" href="#Hdf5Database.cache_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – directory to cache files used by the database wrapper class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Database.datasets">
+<code class="descname">datasets</code><a class="headerlink" href="#Hdf5Database.datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">Hdf5Dataset</span></code> – datasets contained in this database</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="hdf5dataset">
+<h2>Hdf5Dataset<a class="headerlink" href="#hdf5dataset" title="Permalink to this headline">¶</a></h2>
+<p>A wrapper for h5py functions to read and write individual datasets of 3D object models, parallel-jaw grasps, and grasp metrics.
+The intended use is to have a separate dataset for each unique source of 3D object models (e.g. 3DNet, KIT).</p>
+<dl class="class">
+<dt id="dexnet.database.Hdf5Dataset">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5Dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>data</em>, <em>cache_dir=None</em>, <em>start_index=0</em>, <em>end_index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for HDF5 datasets with h5py.</p>
+<dl class="attribute">
+<dt id="Hdf5Dataset.dataset_name">
+<code class="descname">dataset_name</code><a class="headerlink" href="#Hdf5Dataset.dataset_name" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – fname of the dataset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Dataset.data">
+<code class="descname">data</code><a class="headerlink" href="#Hdf5Dataset.data" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> – Hdf5 group corresponding to the data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Dataset.cache_dir">
+<code class="descname">cache_dir</code><a class="headerlink" href="#Hdf5Dataset.cache_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – directory to cache files used by the dataset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Dataset.start_index">
+<code class="descname">start_index</code><a class="headerlink" href="#Hdf5Dataset.start_index" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">int</span></code> – initial object index to use for iteration</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Hdf5Dataset.end_index">
+<code class="descname">end_index</code><a class="headerlink" href="#Hdf5Dataset.end_index" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">int</span></code> – final object index to use for iteration</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="hdf5objectfactory">
+<h2>Hdf5ObjectFactory<a class="headerlink" href="#hdf5objectfactory" title="Permalink to this headline">¶</a></h2>
+<p>Low-level conversion methods between h5py groups and datasets to common object types.</p>
+<dl class="class">
+<dt id="dexnet.database.Hdf5ObjectFactory">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5ObjectFactory</code><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Functions for reading and writing new objects from HDF5 fields. Should not be called directly.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="meshprocessor">
+<h2>MeshProcessor<a class="headerlink" href="#meshprocessor" title="Permalink to this headline">¶</a></h2>
+<p>Encapsulates mesh cleaning &amp; preprocessing pipeline for database generation.</p>
+<p>..autoclass:: dexnet.database.MeshProcessor</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="grasping.html" class="btn btn-neutral float-right" title="grasping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="DexNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
