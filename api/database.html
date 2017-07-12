@@ -117,13 +117,7 @@
 <p class="caption"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api.html">DexNet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#hdf5database">Hdf5Database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hdf5dataset">Hdf5Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hdf5objectfactory">Hdf5ObjectFactory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#meshprocessor">MeshProcessor</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grasping.html">grasping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="learning.html">learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization.html">visualization</a></li>
@@ -193,96 +187,1351 @@
   <div class="section" id="database">
 <h1>database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
 <p>Classes for access and storage of 3D models, images, grasps, and grasp quality metrics from Dex-Net.</p>
-<div class="section" id="hdf5database">
-<h2>Hdf5Database<a class="headerlink" href="#hdf5database" title="Permalink to this headline">¶</a></h2>
-<p>A wrapper for opening h5py databases that store datasets of 3D object models, parallel-jaw grasps, and grasp metrics.</p>
+<span class="target" id="module-dexnet.database"></span><dl class="class">
+<dt id="dexnet.database.Database">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Database</code><span class="sig-paren">(</span><em>access_level=’READ_ONLY’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for Dex-Net databases. Main purpose is to wrap individual datasets.</p>
+<dl class="attribute">
+<dt id="dexnet.database.Database.access_level">
+<code class="descname">access_level</code><a class="headerlink" href="#dexnet.database.Database.access_level" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – level of access, READ_ONLY versus READ_WRITE versus WRITE, for the database</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="dexnet.database.Hdf5Database">
 <em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5Database</code><span class="sig-paren">(</span><em>database_filename</em>, <em>access_level=’READ_ONLY’</em>, <em>cache_dir=’.dexnet’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper for HDF5 databases with h5py.</p>
 <dl class="attribute">
-<dt id="Hdf5Database.database_filename">
-<code class="descname">database_filename</code><a class="headerlink" href="#Hdf5Database.database_filename" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Database.database_filename">
+<code class="descname">database_filename</code><a class="headerlink" href="#dexnet.database.Hdf5Database.database_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – filenaame of HDF5 database, must have extension .hdf5</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Database.access_level">
-<code class="descname">access_level</code><a class="headerlink" href="#Hdf5Database.access_level" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Database.access_level">
+<code class="descname">access_level</code><a class="headerlink" href="#dexnet.database.Hdf5Database.access_level" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – level of access, READ_ONLY versus READ_WRITE versus WRITE, for the database</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Database.cache_dir">
-<code class="descname">cache_dir</code><a class="headerlink" href="#Hdf5Database.cache_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Database.cache_dir">
+<code class="descname">cache_dir</code><a class="headerlink" href="#dexnet.database.Hdf5Database.cache_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – directory to cache files used by the database wrapper class</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Database.datasets">
-<code class="descname">datasets</code><a class="headerlink" href="#Hdf5Database.datasets" title="Permalink to this definition">¶</a></dt>
-<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">Hdf5Dataset</span></code> – datasets contained in this database</p>
+<dt id="dexnet.database.Hdf5Database.datasets">
+<code class="descname">datasets</code><a class="headerlink" href="#dexnet.database.Hdf5Database.datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference internal" href="#dexnet.database.Hdf5Dataset" title="dexnet.database.Hdf5Dataset"><code class="xref py py-obj docutils literal"><span class="pre">Hdf5Dataset</span></code></a> – datasets contained in this database</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Database.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the HDF5 file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Database.create_dataset">
+<code class="descname">create_dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>obj_keys=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database.create_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create dataset with obj keys and add to the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of dataset to create</li>
+<li><strong>obj_keys</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – keys of the objects to add to the dataset</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the created dataset</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#dexnet.database.Hdf5Dataset" title="dexnet.database.Hdf5Dataset"><code class="xref py py-obj docutils literal"><span class="pre">Hdf5Dataset</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Database.create_linked_dataset">
+<code class="descname">create_linked_dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>graspable_list</em>, <em>nearest_neighbors</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database.create_linked_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new dataset that links to objects physically stored as part of another dataset. Not currently implemented</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Database.dataset">
+<code class="descname">dataset</code><span class="sig-paren">(</span><em>dataset_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns handles to individual Hdf5 datasets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – string name of the dataset</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dataset wrapper for the given name, if it exists, None otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj <cite>Hdf5Dataset</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Database.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Database.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the file</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="hdf5dataset">
-<h2>Hdf5Dataset<a class="headerlink" href="#hdf5dataset" title="Permalink to this headline">¶</a></h2>
-<p>A wrapper for h5py functions to read and write individual datasets of 3D object models, parallel-jaw grasps, and grasp metrics.
-The intended use is to have a separate dataset for each unique source of 3D object models (e.g. 3DNet, KIT).</p>
+<dl class="class">
+<dt id="dexnet.database.Dataset">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Dataset</code><a class="headerlink" href="#dexnet.database.Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for different dataset implementations. Only Hdf5 is currently supported</p>
+</dd></dl>
+
 <dl class="class">
 <dt id="dexnet.database.Hdf5Dataset">
 <em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5Dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>data</em>, <em>cache_dir=None</em>, <em>start_index=0</em>, <em>end_index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper for HDF5 datasets with h5py.</p>
 <dl class="attribute">
-<dt id="Hdf5Dataset.dataset_name">
-<code class="descname">dataset_name</code><a class="headerlink" href="#Hdf5Dataset.dataset_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Dataset.dataset_name">
+<code class="descname">dataset_name</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.dataset_name" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – fname of the dataset</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Dataset.data">
-<code class="descname">data</code><a class="headerlink" href="#Hdf5Dataset.data" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Dataset.data">
+<code class="descname">data</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.data" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> – Hdf5 group corresponding to the data</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Dataset.cache_dir">
-<code class="descname">cache_dir</code><a class="headerlink" href="#Hdf5Dataset.cache_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Dataset.cache_dir">
+<code class="descname">cache_dir</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.cache_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – directory to cache files used by the dataset</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Dataset.start_index">
-<code class="descname">start_index</code><a class="headerlink" href="#Hdf5Dataset.start_index" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Dataset.start_index">
+<code class="descname">start_index</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.start_index" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">int</span></code> – initial object index to use for iteration</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Hdf5Dataset.end_index">
-<code class="descname">end_index</code><a class="headerlink" href="#Hdf5Dataset.end_index" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.database.Hdf5Dataset.end_index">
+<code class="descname">end_index</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.end_index" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">int</span></code> – final object index to use for iteration</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.attach_metadata_func">
+<code class="descname">attach_metadata_func</code><span class="sig-paren">(</span><em>metadata_name</em>, <em>metadata_func</em>, <em>overwrite=False</em>, <em>store_func=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.attach_metadata_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a function that computes a given metadata from a Mesh3D object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>metadata_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of metadata type to attach function to</li>
+<li><strong>metadata_func</strong> (<code class="xref py py-obj docutils literal"><span class="pre">function</span></code>) – function that computes metric from Mesh3D object. Must return type consistent with what was set in create_metadata
+Note that for manually set metadata you can attach an object that isn’t a function</li>
+<li><strong>overwrite</strong> (<em>boolean</em>) – if True, overwrites existing metadata function</li>
+<li><strong>store_func</strong> (<em>boolean</em>) – if True, attempts to use dill to serialize the function and store it in the database for later use.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if succesful, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-</div>
-<div class="section" id="hdf5objectfactory">
-<h2>Hdf5ObjectFactory<a class="headerlink" href="#hdf5objectfactory" title="Permalink to this headline">¶</a></h2>
-<p>Low-level conversion methods between h5py groups and datasets to common object types.</p>
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.available_metrics">
+<code class="descname">available_metrics</code><span class="sig-paren">(</span><em>key</em>, <em>gripper=’pr2’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.available_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the metrics computed for a given object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of names of metric computed and stored for the object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.compute_object_metadata">
+<code class="descname">compute_object_metadata</code><span class="sig-paren">(</span><em>key</em>, <em>metadata_names=None</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.compute_object_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes and stores metadata for object and metadata type(s) specified</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to store metadata for</li>
+<li><strong>metadata_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name of metadata types to compute. if None computes all</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite existing metadata with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if successful, False if aborted due to existing data</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.connected_components">
+<code class="descname">connected_components</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.connected_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dict of the connected components of the given mesh. Returns None if connected components are unavailable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>:obj:`dict` mapping :obj:`str` to</strong> – dict of connected components of the mesh. Keys are there for indexing.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj:<a href="#id1"><span class="problematic" id="id2">`</span></a>Mesh3D</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.convex_pieces">
+<code class="descname">convex_pieces</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.convex_pieces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the set of convex pieces for the given key, if they exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to read convex pieces for</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of convex pieces of object, or None if they do not exist</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">Mesh3D</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError : If the key is not in the dataset</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.create_graspable">
+<code class="descname">create_graspable</code><span class="sig-paren">(</span><em>key</em>, <em>mesh=None</em>, <em>sdf=None</em>, <em>stable_poses=None</em>, <em>mass=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.create_graspable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a graspable object in the given dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of the object, for indexing</li>
+<li><strong>mesh</strong> (<code class="xref py py-obj docutils literal"><span class="pre">Mesh3D</span></code>) – mesh for object geometry</li>
+<li><strong>sdf</strong> (<code class="xref py py-obj docutils literal"><span class="pre">Sdf3D</span></code>) – signed distance field for object contact computations</li>
+<li><strong>stable_poses</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">StablePose</span></code>) – stable poses of the object</li>
+<li><strong>mass</strong> (<em>float</em>) – mass of the object in kilograms</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If the key is already in the dataset</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.create_metadata">
+<code class="descname">create_metadata</code><span class="sig-paren">(</span><em>metadata_name</em>, <em>metadata_type</em>, <em>metadata_description=’No description’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.create_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an object metadata with the given name for easier access.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>metadata_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of new metadata type</li>
+<li><strong>metadata_type</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – <dl class="docutils">
+<dt>type of metadata. Must be {‘scalar’, ‘array’}.</dt>
+<dd>primitive: anything that can be a non-object numpy scalar
+array:     numpy array with non-object dtype</dd>
+</dl>
+</li>
+<li><strong>metadata_description</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Description (helptext) for metadata. Optional</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if creation was successful, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.create_metric">
+<code class="descname">create_metric</code><span class="sig-paren">(</span><em>metric_name</em>, <em>metric_config</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.create_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a grasp quality metric with the given name for easier access.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of new grasp quality metric</li>
+<li><strong>metric_config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">GraspQualityConfig</span></code>) – configuration specifying parameters of a given metric</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if creation was successful, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_convex_pieces">
+<code class="descname">delete_convex_pieces</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_convex_pieces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete convex pieces for an object from the dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of the object to delete pieces for</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if object deleted, False otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_graspable">
+<code class="descname">delete_graspable</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_graspable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a graspable from the dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of the object to delete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if object deleted, False otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_grasps">
+<code class="descname">delete_grasps</code><span class="sig-paren">(</span><em>key</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a set of grasps associated with the given gripper.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if grasps were deleted for the given object and gripper, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_metadata">
+<code class="descname">delete_metadata</code><span class="sig-paren">(</span><em>metadata_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a metadata type from the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metadata_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of metadata to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_metric">
+<code class="descname">delete_metric</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a metric from the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of metric to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.delete_rendered_images">
+<code class="descname">delete_rendered_images</code><span class="sig-paren">(</span><em>key</em>, <em>stable_pose_id=None</em>, <em>render_mode=’depth’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.delete_rendered_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete previously rendered images.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose to index images for</li>
+<li><strong>render_mode</strong> (<code class="xref py py-obj docutils literal"><span class="pre">perception.RenderMode</span></code>) – modality of images to index (e.g. depth or segmask)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">whether or not the images were deleted</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.get_metadata_desc">
+<code class="descname">get_metadata_desc</code><span class="sig-paren">(</span><em>metadata_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.get_metadata_desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns description for metadata type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metadata_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name of metadata to return description for</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.get_metadata_types">
+<code class="descname">get_metadata_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.get_metadata_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary mapping metadata names to metadata types</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.grasp_metric">
+<code class="descname">grasp_metric</code><span class="sig-paren">(</span><em>key</em>, <em>grasp</em>, <em>metric_name</em>, <em>gripper</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.grasp_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a single grasp metric, computing and storing if necessary. Not yet implemented.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.grasp_metrics">
+<code class="descname">grasp_metrics</code><span class="sig-paren">(</span><em>key</em>, <em>grasps</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.grasp_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of grasp metric dictionaries fot the list of grasps provided to the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dictionary mapping grasp ids to dictionaries that map metric names to numeric values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.graspable">
+<code class="descname">graspable</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.graspable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read in the GraspableObject3D corresponding to given key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – the string key of the object to index</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the graspable object corresponding to the given key</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">GraspableObject3D</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If the key is not found in the dataset</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.grasps">
+<code class="descname">grasps</code><span class="sig-paren">(</span><em>key</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of grasps for the given graspable and gripper, optionally associated with the given stable pose.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">stored grasps for the object and gripper, empty list if gripper not found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference internal" href="grasping.html#dexnet.grasping.ParallelJawPtGrasp3D" title="dexnet.grasping.ParallelJawPtGrasp3D"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.ParallelJawPtGrasp3D</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.has_grasps">
+<code class="descname">has_grasps</code><span class="sig-paren">(</span><em>key</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.has_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if grasps exist for a given object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if dataset contains grasps for the given object and gripper, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.has_metadata">
+<code class="descname">has_metadata</code><span class="sig-paren">(</span><em>metadata_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.has_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a metadata type already exists</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.has_metric">
+<code class="descname">has_metric</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.has_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a metric already exists</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.has_rendered_images">
+<code class="descname">has_rendered_images</code><span class="sig-paren">(</span><em>key</em>, <em>stable_pose_id=None</em>, <em>render_mode=’depth’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.has_rendered_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether or not a graspable has rendered images for the given stable pose and image type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose to index images for</li>
+<li><strong>render_mode</strong> (<code class="xref py py-obj docutils literal"><span class="pre">perception.RenderMode</span></code>) – modality of images to index (e.g. depth or segmask)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">whether or not the dataset has images for the given pose and modality</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.mesh">
+<code class="descname">mesh</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the mesh for the given key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to read mesh for</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">mesh of object</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">Mesh3D</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError : If the key is not in the dataset</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.metadata">
+<code class="descname">metadata</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> – Types and optional descriptions/functions for metadata in the dataset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.metadata_func">
+<code class="descname">metadata_func</code><span class="sig-paren">(</span><em>metadata_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metadata_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns function associated with metadata</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.metadata_names">
+<code class="descname">metadata_names</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metadata_names" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – Names of available metadata</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.metric">
+<code class="descname">metric</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a metric config from the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of the metric to read</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">configuration of grasp metric, None if metric does not exist</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">GraspQualityConfig</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.metric_names">
+<code class="descname">metric_names</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metric_names" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – Names of aviailable metrics</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.metrics">
+<code class="descname">metrics</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> – Data for available metrics in the dataset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.name">
+<code class="descname">name</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – Name of the dataset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the next object file in the list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the next graspable object in the iteration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">GraspableObject3D</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.num_objects">
+<code class="descname">num_objects</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.num_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – number of objects in the dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.obj_mesh_filename">
+<code class="descname">obj_mesh_filename</code><span class="sig-paren">(</span><em>key</em>, <em>scale=1.0</em>, <em>output_dir=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.obj_mesh_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes an obj file in the database “cache”  directory and returns the path to the file.
+Does not overwrite existing files by default.
+Typically used for integration with other libraries that require mesh files as .obj.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to write mesh for</li>
+<li><strong>scale</strong> (<em>float</em>) – optional rescaling factor</li>
+<li><strong>output_dir</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – directory to save to, if None saves to cache dir</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – whether or not to overwrite an existing file with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">filename of .obj file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.object">
+<code class="descname">object</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.object" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> : Data for objects in the dataset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.object_keys">
+<code class="descname">object_keys</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.object_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> – Names of all objects in the dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.object_metadata">
+<code class="descname">object_metadata</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.object_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of object metadata for the object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metadata for</li>
+<li><strong>metadata_type</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dictionary mapping metadata names to numeric/numpy list values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dexnet.database.Hdf5Dataset.objects">
+<code class="descname">objects</code><a class="headerlink" href="#dexnet.database.Hdf5Dataset.objects" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> – Data containing handles of objects.
+Acts like a dictionary mapping object keys to object data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.rendered_image_types">
+<code class="descname">rendered_image_types</code><span class="sig-paren">(</span><em>key</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.rendered_image_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the available rendered image modalities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose to index images for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of available rendered image modes</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.rendered_images">
+<code class="descname">rendered_images</code><span class="sig-paren">(</span><em>key</em>, <em>stable_pose_id=None</em>, <em>render_mode=’depth’</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.rendered_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendered images for the given object for the given render mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose to index images for</li>
+<li><strong>render_mode</strong> (<code class="xref py py-obj docutils literal"><span class="pre">perception.RenderMode</span></code>) – modality of images to index (e.g. depth or segmask)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of stored images for the given object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">perception.ObjectRender</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.sorted_grasps">
+<code class="descname">sorted_grasps</code><span class="sig-paren">(</span><em>key</em>, <em>metric</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.sorted_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of grasps for the given graspable sorted by decreasing quality according to the given metric.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>metric</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of metric to use for sorting</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference internal" href="grasping.html#dexnet.grasping.ParallelJawPtGrasp3D" title="dexnet.grasping.ParallelJawPtGrasp3D"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.ParallelJawPtGrasp3D</span></code></a> – stored grasps for the object and gripper sorted by metric in descending order, empty list if gripper not found</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of float – values of metrics for the grasps sorted in descending order, empty list if gripper not found</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.stable_pose">
+<code class="descname">stable_pose</code><span class="sig-paren">(</span><em>key</em>, <em>stable_pose_id</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.stable_pose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stable pose of stable pose id for object key</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_pose_id</strong> (obj:<cite>str</cite>) – id of stable pose to index</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">requested stable pose</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><code class="xref py py-obj docutils literal"><span class="pre">StablePose</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If stable pose id is unrecognized</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.stable_poses">
+<code class="descname">stable_poses</code><span class="sig-paren">(</span><em>key</em>, <em>min_p=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stable poses for object key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>min_p</strong> (<em>float</em>) – min stable pose probability to return</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of stable poses for the given object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">StablePose</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.stl_mesh_filename">
+<code class="descname">stl_mesh_filename</code><span class="sig-paren">(</span><em>key</em>, <em>scale=1.0</em>, <em>output_dir=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.stl_mesh_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes an stl file in the database “cache”  directory and returns the path to the file.
+Does not overwrite existing files by default.
+Typically used for integration with other libraries that require mesh files as .obj.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to write mesh for</li>
+<li><strong>scale</strong> (<em>float</em>) – optional rescaling factor</li>
+<li><strong>output_dir</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – directory to save to, if None saves to cache dir</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – whether or not to overwrite an existing file with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">filename of .stl file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_connected_components">
+<code class="descname">store_connected_components</code><span class="sig-paren">(</span><em>key</em>, <em>connected_components</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_connected_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the connected components of the mesh</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>connected_components</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">Mesh3D</span></code>) – connected components to write</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – True if existing connected components should be overwritten</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">whether or not the connected components were written</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_convex_pieces">
+<code class="descname">store_convex_pieces</code><span class="sig-paren">(</span><em>key</em>, <em>convex_pieces</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_convex_pieces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates convex pieces with the given object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>convex_pieces</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">meshpy.Mesh3D</span></code>) – convex pieces to store</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite convex pieces</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if convex pieces were stored for the given object, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_grasp_metrics">
+<code class="descname">store_grasp_metrics</code><span class="sig-paren">(</span><em>key</em>, <em>grasp_metric_dict</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_grasp_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add grasp metrics in grasp_metric_dict to the data associated with grasps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to store metrics for</li>
+<li><strong>grasp_metric_dict</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code> mapping <code class="xref py py-obj docutils literal"><span class="pre">int</span></code> to <code class="xref py py-obj docutils literal"><span class="pre">dict</span></code> mapping <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> to float) – mapping from grasp ids to a dictionary mapping metric names to numeric values</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite existing metrics with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if succcessful, False if aborted due to existing data</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_grasps">
+<code class="descname">store_grasps</code><span class="sig-paren">(</span><em>key</em>, <em>grasps</em>, <em>gripper=’pr2’</em>, <em>stable_pose_id=None</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates grasps in list grasps with the given object. Optionally associates the grasps with a single stable pose.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to check metrics for</li>
+<li><strong>gripper</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>stable_pose_id</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – id of stable pose</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite grasps with the same id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if grasps were stored for the given object and gripper, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_mesh">
+<code class="descname">store_mesh</code><span class="sig-paren">(</span><em>key</em>, <em>mesh</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates a mesh with the given object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>mesh</strong> (<code class="xref py py-obj docutils literal"><span class="pre">meshpy.Mesh3D</span></code>) – mesh to store</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if mesh stored for the given object, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_object_metadata">
+<code class="descname">store_object_metadata</code><span class="sig-paren">(</span><em>key</em>, <em>metadata_dict</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_object_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually write metadata</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to store metadata for</li>
+<li><strong>metadata_dict</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code> mapping <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> to primatives/np arrays) – Dictionary of metadata to write. Maps metadata name to the metadata</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite existing metadata with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if successful, False if aborted due to existing data</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_rendered_images">
+<code class="descname">store_rendered_images</code><span class="sig-paren">(</span><em>key</em>, <em>rendered_images</em>, <em>stable_pose_id=None</em>, <em>render_mode=’depth’</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_rendered_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store rendered images of the object for a given stable pose.
+:param key: key of object
+:type key: <code class="xref py py-obj docutils literal"><span class="pre">str</span></code>
+:param rendered_images: list of images rendered for the given object
+:type rendered_images: <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">ObjectRender</span></code>
+:param stable_pose_id: id of stable pose to index images for
+:type stable_pose_id: obj:<cite>str</cite>
+:param render_mode: modality of images to index (e.g. depth or segmask)
+:type render_mode: <code class="xref py py-obj docutils literal"><span class="pre">perception.RenderMode</span></code>
+:param force_overwrite: True if existing images should be overwritten
+:type force_overwrite: bool</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether or not the images were written</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.store_stable_poses">
+<code class="descname">store_stable_poses</code><span class="sig-paren">(</span><em>key</em>, <em>stable_poses</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.store_stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associates stable poses with the given object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object</li>
+<li><strong>stable_poses</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">meshpy.StablePose</span></code>) – stable poses to store</li>
+<li><strong>force_overwrite</strong> (<em>bool</em>) – whether or not to overwrite stable poses</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if grasps were stored for the given object, False otherwise</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.subset">
+<code class="descname">subset</code><span class="sig-paren">(</span><em>start_index</em>, <em>end_index</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.subset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a subset of the dataset (should be used for iterating only)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_index</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>) – index of first object key in subset</li>
+<li><strong>end_index</strong> (<code class="xref py py-obj docutils literal"><span class="pre">int</span></code>) – index of last object key in subset</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dataset containing only the specified subset</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#dexnet.database.Hdf5Dataset" title="dexnet.database.Hdf5Dataset"><code class="xref py py-obj docutils literal"><span class="pre">Hdf5Dataset</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.database.Hdf5Dataset.urdf_mesh_filename">
+<code class="descname">urdf_mesh_filename</code><span class="sig-paren">(</span><em>key</em>, <em>output_dir=None</em>, <em>overwrite=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5Dataset.urdf_mesh_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a urd file in the database “cache”  directory and returns the path to the file.
+Overwrites existing files by default.
+Typically used for integration with other libraries that require mesh files as .obj.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – key of object to write mesh for</li>
+<li><strong>scale</strong> (<em>float</em>) – optional rescaling factor</li>
+<li><strong>output_dir</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – directory to save to, if None saves to cache dir</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – whether or not to overwrite an existing file with the same name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">filename of .urdf file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="dexnet.database.Hdf5ObjectFactory">
 <em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">Hdf5ObjectFactory</code><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Functions for reading and writing new objects from HDF5 fields. Should not be called directly.</p>
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.connected_components">
+<em class="property">static </em><code class="descname">connected_components</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.connected_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dict of all connected components in the object</p>
 </dd></dl>
 
-</div>
-<div class="section" id="meshprocessor">
-<h2>MeshProcessor<a class="headerlink" href="#meshprocessor" title="Permalink to this headline">¶</a></h2>
-<p>Encapsulates mesh cleaning &amp; preprocessing pipeline for database generation.</p>
-<p>..autoclass:: dexnet.database.MeshProcessor</p>
-</div>
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.grasp_metrics">
+<em class="property">static </em><code class="descname">grasp_metrics</code><span class="sig-paren">(</span><em>grasps</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.grasp_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of the metrics for the given grasps</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.grasps">
+<em class="property">static </em><code class="descname">grasps</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of grasp objects from the data provided in the HDF5 dictionary</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.mesh_3d">
+<em class="property">static </em><code class="descname">mesh_3d</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.mesh_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts HDF5 data provided in dictionary data to a mesh object</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.object_metadata">
+<em class="property">static </em><code class="descname">object_metadata</code><span class="sig-paren">(</span><em>data</em>, <em>metadata_types</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.object_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of the metadata for the given object</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.sdf_3d">
+<em class="property">static </em><code class="descname">sdf_3d</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.sdf_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts HDF5 data provided in dictionary data to an SDF object</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.stable_pose">
+<em class="property">static </em><code class="descname">stable_pose</code><span class="sig-paren">(</span><em>data</em>, <em>stable_pose_id</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.stable_pose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read out a stable pose object</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.stable_poses">
+<em class="property">static </em><code class="descname">stable_poses</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read out a list of stable pose objects</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_connected_components">
+<em class="property">static </em><code class="descname">write_connected_components</code><span class="sig-paren">(</span><em>connected_components</em>, <em>data</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_connected_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a list of connected components</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_grasp_metrics">
+<em class="property">static </em><code class="descname">write_grasp_metrics</code><span class="sig-paren">(</span><em>grasp_metric_dict</em>, <em>data</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_grasp_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write grasp metrics to database</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_grasps">
+<em class="property">static </em><code class="descname">write_grasps</code><span class="sig-paren">(</span><em>grasps</em>, <em>data</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes grasps to HDF5 data provided in data</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_mesh_3d">
+<em class="property">static </em><code class="descname">write_mesh_3d</code><span class="sig-paren">(</span><em>mesh</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_mesh_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes mesh object to HDF5 data provided in data</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_object_metadata">
+<em class="property">static </em><code class="descname">write_object_metadata</code><span class="sig-paren">(</span><em>metadata_dict</em>, <em>data</em>, <em>metadata_types</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_object_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes metadata to HDF5 group for object</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_rendered_images">
+<em class="property">static </em><code class="descname">write_rendered_images</code><span class="sig-paren">(</span><em>rendered_images</em>, <em>data</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_rendered_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write rendered images to database</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_sdf_3d">
+<em class="property">static </em><code class="descname">write_sdf_3d</code><span class="sig-paren">(</span><em>sdf</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_sdf_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes sdf object to HDF5 data provided in data</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dexnet.database.Hdf5ObjectFactory.write_stable_poses">
+<em class="property">static </em><code class="descname">write_stable_poses</code><span class="sig-paren">(</span><em>stable_poses</em>, <em>data</em>, <em>force_overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.Hdf5ObjectFactory.write_stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes stable poses to HDF5 data provided in data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dexnet.database.MeshProcessor">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">MeshProcessor</code><span class="sig-paren">(</span><em>filename</em>, <em>cache_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.MeshProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocessing of mesh files into graspable objects for planning with Dex-Net.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of the mesh file to process</li>
+<li><strong>cache_dir</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – directory to store intermediate files to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dexnet.database.MeshProcessor.generate_graspable">
+<code class="descname">generate_graspable</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.database.MeshProcessor.generate_graspable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a graspable object based on the given configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – dictionary containing values for preprocessing parameters (preprocessing meshlab script, object density, object scale, object rescaling type, path to the SDFGen binary, the dimension of the sdf grid, the amount of sdf padding to use, and the min probability of stable poses to prune)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Required configuration key-value pairs in Other Parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>obj_density</strong> (<em>float</em>) – density of object</li>
+<li><strong>obj_scale</strong> (<em>float</em>) – scale of object</li>
+<li><strong>path_to_sdfgen</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – path to the SDFGen binary</li>
+<li><strong>sdf_dim</strong> (<em>int</em>) – dimensions of signed distance field grid</li>
+<li><strong>sdf_padding</strong> (<em>int</em>) – how much to pad the boundary of the sdf grid</li>
+<li><strong>stp_min_prob</strong> (<em>float</em>) – minimum probability for stored stable poses</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dexnet.database.RescalingType">
+<em class="property">class </em><code class="descclassname">dexnet.database.</code><code class="descname">RescalingType</code><a class="headerlink" href="#dexnet.database.RescalingType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enum to specify different rules for rescaling meshes</p>
+</dd></dl>
+
 </div>
 
 

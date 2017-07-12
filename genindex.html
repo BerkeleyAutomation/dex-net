@@ -218,8 +218,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/learning.html#dexnet.learning.LeastSquaresObjective.A">A (dexnet.learning.LeastSquaresObjective attribute)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Database.access_level">access_level (Hdf5Database attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Database.access_level">access_level (dexnet.database.Database attribute)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5Database.access_level">(dexnet.database.Hdf5Database attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/learning.html#dexnet.learning.AdaptiveSamplingResult">AdaptiveSamplingResult (class in dexnet.learning)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.Tensor.add">add() (dexnet.learning.Tensor method)</a>
@@ -229,6 +233,8 @@
 </li>
       </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspCollisionChecker.add_graspable_object">add_graspable_object() (dexnet.grasping.GraspCollisionChecker method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.add_object">add_object() (dexnet.api.DexNet method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.BetaBernoulliBandit.alpha_prior">alpha_prior (dexnet.learning.BetaBernoulliBandit attribute)</a>
 
@@ -259,6 +265,10 @@
       <li><a href="api/grasping.html#dexnet.grasping.AntipodalGraspSampler">AntipodalGraspSampler (class in dexnet.grasping)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.approach_angle">approach_angle (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.attach_metadata_func">attach_metadata_func() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.available_metrics">available_metrics() (dexnet.database.Hdf5Dataset method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.axis">axis (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
 </li>
@@ -338,10 +348,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/learning.html#dexnet.learning.CorrelatedBayesUCB.c">c (dexnet.learning.CorrelatedBayesUCB attribute)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Database.cache_dir">cache_dir (Hdf5Database attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.cache_dir">cache_dir (dexnet.database.Hdf5Database attribute)</a>
 
       <ul>
-        <li><a href="api/database.html#Hdf5Dataset.cache_dir">(Hdf5Dataset attribute)</a>
+        <li><a href="api/database.html#dexnet.database.Hdf5Dataset.cache_dir">(dexnet.database.Hdf5Dataset attribute)</a>
 </li>
       </ul></li>
       <li><a href="api/learning.html#dexnet.learning.BetaBernoulliBandit.candidates">candidates (dexnet.learning.BetaBernoulliBandit attribute)</a>
@@ -402,19 +412,29 @@
         <li><a href="api/learning.html#dexnet.learning.ThompsonSelectionPolicy.choose_next">(dexnet.learning.ThompsonSelectionPolicy method)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.close">close() (dexnet.database.Hdf5Database method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.Grasp.close_fingers">close_fingers() (dexnet.grasping.Grasp method)</a>
 
       <ul>
         <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.close_fingers">(dexnet.grasping.ParallelJawPtGrasp3D method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.close_width">close_width (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspCollisionChecker.collides_along_approach">collides_along_approach() (dexnet.grasping.GraspCollisionChecker method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.RobotGripper.collides_with_table">collides_with_table() (dexnet.grasping.RobotGripper method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.compute_metadata">compute_metadata() (dexnet.api.DexNet method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/api.html#dexnet.api.DexNet.compute_metrics">compute_metrics() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.compute_object_metadata">compute_object_metadata() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.compute_simulation_data">compute_simulation_data() (dexnet.api.DexNet method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.ConfidenceTerminationCondition">ConfidenceTerminationCondition (class in dexnet.learning)</a>
 </li>
@@ -446,6 +466,12 @@
       </ul></li>
       <li><a href="api/learning.html#dexnet.learning.ConfusionMatrix">ConfusionMatrix (class in dexnet.learning)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.connected_components">connected_components() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.connected_components">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.Contact3D">Contact3D (class in dexnet.grasping)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.Contact3D.contact_point">contact_point (dexnet.grasping.Contact3D attribute)</a>
@@ -458,6 +484,8 @@
         <li><a href="api/grasping.html#dexnet.grasping.GraspableObject3D.convex_pieces">(dexnet.grasping.GraspableObject3D attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.convex_pieces">convex_pieces() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.CorrelatedBayesUCB">CorrelatedBayesUCB (class in dexnet.learning)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.CorrelatedBetaBernoulliBandit">CorrelatedBetaBernoulliBandit (class in dexnet.learning)</a>
@@ -470,12 +498,22 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspQualityConfigFactory.create_config">create_config() (dexnet.grasping.GraspQualityConfigFactory static method)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.create_dataset">create_dataset() (dexnet.database.Hdf5Database method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.create_graspable">create_graspable() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.create_line_of_action">create_line_of_action() (dexnet.grasping.ParallelJawPtGrasp3D static method)</a>
 
       <ul>
         <li><a href="api/grasping.html#dexnet.grasping.PointGrasp.create_line_of_action">(dexnet.grasping.PointGrasp method)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.create_linked_dataset">create_linked_dataset() (dexnet.database.Hdf5Database method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.create_metadata">create_metadata() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.create_metric">create_metric() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.CrossEntropyLoss">CrossEntropyLoss (class in dexnet.learning)</a>
 </li>
   </ul></td>
@@ -484,13 +522,15 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/database.html#Hdf5Dataset.data">data (Hdf5Dataset attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.data">data (dexnet.database.Hdf5Dataset attribute)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.Tensor.data_slice">data_slice() (dexnet.learning.Tensor method)</a>
 </li>
-      <li><a href="api/api.html#DexNet.database">database (DexNet attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Database">Database (class in dexnet.database)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Database.database_filename">database_filename (Hdf5Database attribute)</a>
+      <li><a href="api/api.html#dexnet.api.DexNet.database">database (dexnet.api.DexNet attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.database_filename">database_filename (dexnet.database.Hdf5Database attribute)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.Tensor.datapoint">datapoint() (dexnet.learning.Tensor method)</a>
 
@@ -502,19 +542,41 @@
 </li>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.datapoint_indices_for_tensor">datapoint_indices_for_tensor() (dexnet.learning.TensorDataset method)</a>
 </li>
-      <li><a href="api/api.html#DexNet.dataset">dataset (DexNet attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Dataset">Dataset (class in dexnet.database)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Dataset.dataset_name">dataset_name (Hdf5Dataset attribute)</a>
+      <li><a href="api/api.html#dexnet.api.DexNet.dataset">dataset (dexnet.api.DexNet attribute)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Database.datasets">datasets (Hdf5Database attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.dataset">dataset() (dexnet.database.Hdf5Database method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.dataset_name">dataset_name (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.datasets">datasets (dexnet.database.Hdf5Database attribute)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.default_config">default_config (dexnet.api.DexNet attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_convex_pieces">delete_convex_pieces() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_graspable">delete_graspable() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_grasps">delete_grasps() (dexnet.database.Hdf5Dataset method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/api.html#DexNet.default_config">default_config (DexNet attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_metadata">delete_metadata() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_metric">delete_metric() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.delete_object">delete_object() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.delete_rendered_images">delete_rendered_images() (dexnet.database.Hdf5Dataset method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.NonDeterministicObjective.det_objective">det_objective (dexnet.learning.NonDeterministicObjective attribute)</a>
 </li>
-      <li><a href="api/api.html#dexnet.DexNet">DexNet (class in dexnet)</a>
+      <li><a href="api/api.html#dexnet.api.DexNet">DexNet (class in dexnet.api)</a>
+</li>
+      <li><a href="api/api.html#module-dexnet.api">dexnet.api (module)</a>
+</li>
+      <li><a href="api/database.html#module-dexnet.database">dexnet.database (module)</a>
 </li>
       <li><a href="api/grasping.html#module-dexnet.grasping">dexnet.grasping (module)</a>
 </li>
@@ -530,6 +592,12 @@
 </li>
       <li><a href="api/learning.html#dexnet.learning.DiscreteModel">DiscreteModel (class in dexnet.learning)</a>
 </li>
+      <li><a href="api/api.html#dexnet.api.DexNet.display_grasps">display_grasps() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.display_object">display_object() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.display_stable_poses">display_stable_poses() (dexnet.api.DexNet method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.distance">distance() (dexnet.grasping.ParallelJawPtGrasp3D static method)</a>
 </li>
   </ul></td>
@@ -538,7 +606,7 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/database.html#Hdf5Dataset.end_index">end_index (Hdf5Dataset attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.end_index">end_index (dexnet.database.Hdf5Dataset attribute)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.endpoints">endpoints (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
 </li>
@@ -566,6 +634,8 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.RobustPointGraspMetrics3D.expected_quality">expected_quality() (dexnet.grasping.RobustPointGraspMetrics3D static method)</a>
 </li>
+      <li><a href="api/api.html#dexnet.api.DexNet.export_objects">export_objects() (dexnet.api.DexNet method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -576,14 +646,18 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.find_contact">find_contact() (dexnet.grasping.ParallelJawPtGrasp3D static method)</a>
 </li>
-      <li><a href="api/learning.html#dexnet.learning.TensorDataset.flush">flush() (dexnet.learning.TensorDataset method)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Database.flush">flush() (dexnet.database.Hdf5Database method)</a>
+
+      <ul>
+        <li><a href="api/learning.html#dexnet.learning.TensorDataset.flush">(dexnet.learning.TensorDataset method)</a>
 </li>
+      </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.force_closure">force_closure() (dexnet.grasping.PointGraspMetrics3D static method)</a>
-</li>
-      <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.force_closure_qp">force_closure_qp() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.force_closure_qp">force_closure_qp() (dexnet.grasping.PointGraspMetrics3D static method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.Grasp.frame">frame (dexnet.grasping.Grasp attribute)</a>
 
       <ul>
@@ -620,11 +694,25 @@
 </li>
       <li><a href="scripts/tools.html#generate_gqcnn_dataset.generate_gqcnn_dataset">generate_gqcnn_dataset() (in module generate_gqcnn_dataset)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.MeshProcessor.generate_graspable">generate_graspable() (dexnet.database.MeshProcessor method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspSampler.generate_grasps">generate_grasps() (dexnet.grasping.GraspSampler method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspSampler.generate_grasps_stable_poses">generate_grasps_stable_poses() (dexnet.grasping.GraspSampler method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.generate_tensor_filename">generate_tensor_filename() (dexnet.learning.TensorDataset method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.get_grasps">get_grasps() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.get_metadata">get_metadata() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.get_metadata_desc">get_metadata_desc() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.get_metadata_types">get_metadata_types() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.get_object">get_object() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.get_stable_poses">get_stable_poses() (dexnet.api.DexNet method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.GittinsIndex98">GittinsIndex98 (class in dexnet.learning)</a>
 </li>
@@ -652,6 +740,14 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.grasp_matrix">grasp_matrix() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.grasp_metric">grasp_metric() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.grasp_metrics">grasp_metrics() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.grasp_metrics">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.grasp_quality">grasp_quality() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.QuasiStaticGraspQualityRV.grasp_rv">grasp_rv (dexnet.grasping.QuasiStaticGraspQualityRV attribute)</a>
@@ -664,6 +760,8 @@
         <li><a href="api/grasping.html#dexnet.grasping.GraspQualityFunction.graspable">(dexnet.grasping.GraspQualityFunction attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.graspable">graspable() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspableObject">GraspableObject (class in dexnet.grasping)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspableObject3D">GraspableObject3D (class in dexnet.grasping)</a>
@@ -680,6 +778,12 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspQualityResult">GraspQualityResult (class in dexnet.grasping)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.grasps">grasps() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.grasps">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspSampler">GraspSampler (class in dexnet.grasping)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspSampler.gripper">gripper (dexnet.grasping.GraspSampler attribute)</a>
@@ -696,12 +800,20 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.has_grasps">has_grasps() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.has_metadata">has_metadata() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.has_metric">has_metric() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.has_rendered_images">has_rendered_images() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/database.html#dexnet.database.Hdf5Database">Hdf5Database (class in dexnet.database)</a>
 </li>
       <li><a href="api/database.html#dexnet.database.Hdf5Dataset">Hdf5Dataset (class in dexnet.database)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory">Hdf5ObjectFactory (class in dexnet.database)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.DifferentiableObjective.hessian">hessian() (dexnet.learning.DifferentiableObjective method)</a>
@@ -776,14 +888,22 @@
 </li>
       <li><a href="api/learning.html#dexnet.learning.LeastSquaresObjective">LeastSquaresObjective (class in dexnet.learning)</a>
 </li>
+      <li><a href="api/api.html#dexnet.api.DexNet.list_grippers">list_grippers() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.list_metadata">list_metadata() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.list_metrics">list_metrics() (dexnet.api.DexNet method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/api.html#dexnet.api.DexNet.list_objects">list_objects() (dexnet.api.DexNet method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.RobotGripper.load">load() (dexnet.grasping.RobotGripper static method)</a>
 
       <ul>
         <li><a href="api/learning.html#dexnet.learning.Tensor.load">(dexnet.learning.Tensor static method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.load_tensor">load_tensor() (dexnet.learning.TensorDataset method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.LogisticCrossEntropyObjective">LogisticCrossEntropyObjective (class in dexnet.learning)</a>
@@ -824,8 +944,26 @@
         <li><a href="api/grasping.html#dexnet.grasping.RobotGripper.mesh">(dexnet.grasping.RobotGripper attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.mesh">mesh() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.mesh_3d">mesh_3d() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/database.html#dexnet.database.MeshProcessor">MeshProcessor (class in dexnet.database)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metadata">metadata (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metadata_func">metadata_func() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metadata_names">metadata_names (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metric">metric() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metric_names">metric_names (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.metrics">metrics (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.min_norm_vector_in_facet">min_norm_vector_in_facet() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.min_singular">min_singular() (dexnet.grasping.PointGraspMetrics3D static method)</a>
@@ -850,10 +988,18 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/grasping.html#dexnet.grasping.RobotGripper.name">name (dexnet.grasping.RobotGripper attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.name">name (dexnet.database.Hdf5Dataset attribute)</a>
+
+      <ul>
+        <li><a href="api/grasping.html#dexnet.grasping.RobotGripper.name">(dexnet.grasping.RobotGripper attribute)</a>
 </li>
-      <li><a href="api/learning.html#dexnet.learning.TensorDataset.next">next() (dexnet.learning.TensorDataset method)</a>
+      </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.next">next() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/learning.html#dexnet.learning.TensorDataset.next">(dexnet.learning.TensorDataset method)</a>
 </li>
+      </ul></li>
       <li><a href="api/learning.html#dexnet.learning.CorrelatedBayesUCB.nn">nn (dexnet.learning.CorrelatedBayesUCB attribute)</a>
 
       <ul>
@@ -873,6 +1019,8 @@
       <li><a href="api/grasping.html#dexnet.grasping.Contact3D.normal">normal (dexnet.grasping.Contact3D attribute)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.Contact3D.normal_force_magnitude">normal_force_magnitude() (dexnet.grasping.Contact3D method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.num_objects">num_objects (dexnet.database.Hdf5Dataset attribute)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.BernoulliModel.num_vars">num_vars (dexnet.learning.BernoulliModel attribute)</a>
 
@@ -894,10 +1042,22 @@
         <li><a href="api/learning.html#dexnet.learning.MinimizationObjective.obj">(dexnet.learning.MinimizationObjective attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.obj_mesh_filename">obj_mesh_filename() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/grasping.html#dexnet.grasping.GraspCollisionChecker.obj_names">obj_names (dexnet.grasping.GraspCollisionChecker attribute)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.QuasiStaticGraspQualityRV.obj_rv">obj_rv (dexnet.grasping.QuasiStaticGraspQualityRV attribute)</a>
 </li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.object">object() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.object_keys">object_keys (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.object_metadata">object_metadata() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.object_metadata">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
       <li><a href="api/learning.html#dexnet.learning.Objective">Objective (class in dexnet.learning)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.BetaBernoulliBandit.objective">objective (dexnet.learning.BetaBernoulliBandit attribute)</a>
@@ -928,7 +1088,13 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.objects">objects (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.open">open() (dexnet.learning.TensorDataset static method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.open_database">open_database() (dexnet.api.DexNet method)</a>
+</li>
+      <li><a href="api/api.html#dexnet.api.DexNet.open_dataset">open_dataset() (dexnet.api.DexNet method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.open_width">open_width (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
 </li>
@@ -1064,10 +1230,16 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.OpenRaveCollisionChecker.remove_object">remove_object() (dexnet.grasping.OpenRaveCollisionChecker method)</a>
 </li>
-      <li><a href="api/grasping.html#dexnet.grasping.GraspableObject3D.rescale">rescale() (dexnet.grasping.GraspableObject3D method)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.rendered_image_types">rendered_image_types() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.rendered_images">rendered_images() (dexnet.database.Hdf5Dataset method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/grasping.html#dexnet.grasping.GraspableObject3D.rescale">rescale() (dexnet.grasping.GraspableObject3D method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.RescalingType">RescalingType (class in dexnet.database)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.Tensor.reset">reset() (dexnet.learning.Tensor method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.BetaBernoulliBandit.reset_model">reset_model() (dexnet.learning.BetaBernoulliBandit method)</a>
@@ -1116,9 +1288,11 @@
       </ul></li>
       <li><a href="api/grasping.html#dexnet.grasping.AntipodalGraspSampler.sample_from_cone">sample_from_cone() (dexnet.grasping.AntipodalGraspSampler method)</a>
 </li>
-      <li><a href="api/grasping.html#dexnet.grasping.AntipodalGraspSampler.sample_grasps">sample_grasps() (dexnet.grasping.AntipodalGraspSampler method)</a>
+      <li><a href="api/api.html#dexnet.api.DexNet.sample_grasps">sample_grasps() (dexnet.api.DexNet method)</a>
 
       <ul>
+        <li><a href="api/grasping.html#dexnet.grasping.AntipodalGraspSampler.sample_grasps">(dexnet.grasping.AntipodalGraspSampler method)</a>
+</li>
         <li><a href="api/grasping.html#dexnet.grasping.GaussianGraspSampler.sample_grasps">(dexnet.grasping.GaussianGraspSampler method)</a>
 </li>
         <li><a href="api/grasping.html#dexnet.grasping.GraspSampler.sample_grasps">(dexnet.grasping.GraspSampler method)</a>
@@ -1138,10 +1312,10 @@
         <li><a href="api/grasping.html#dexnet.grasping.GraspableObject3D.sdf">(dexnet.grasping.GraspableObject3D attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.sdf_3d">sdf_3d() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.Tensor.set_datapoint">set_datapoint() (dexnet.learning.Tensor method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/grasping.html#dexnet.grasping.GraspCollisionChecker.set_graspable_object">set_graspable_object() (dexnet.grasping.GraspCollisionChecker method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.OpenRaveCollisionChecker.set_object">set_object() (dexnet.grasping.OpenRaveCollisionChecker method)</a>
@@ -1154,6 +1328,8 @@
 </li>
       <li><a href="api/learning.html#dexnet.learning.Snapshot">Snapshot (class in dexnet.learning)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/learning.html#dexnet.learning.BernoulliModel.snapshot">snapshot() (dexnet.learning.BernoulliModel method)</a>
 
       <ul>
@@ -1166,11 +1342,45 @@
         <li><a href="api/learning.html#dexnet.learning.Model.snapshot">(dexnet.learning.Model method)</a>
 </li>
       </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.sorted_grasps">sorted_grasps() (dexnet.database.Hdf5Dataset method)</a>
+</li>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.split">split() (dexnet.learning.TensorDataset method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.SquaredErrorLoss">SquaredErrorLoss (class in dexnet.learning)</a>
 </li>
-      <li><a href="api/database.html#Hdf5Dataset.start_index">start_index (Hdf5Dataset attribute)</a>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.stable_pose">stable_pose() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.stable_pose">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.stable_poses">stable_poses() (dexnet.database.Hdf5Dataset method)</a>
+
+      <ul>
+        <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.stable_poses">(dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.start_index">start_index (dexnet.database.Hdf5Dataset attribute)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.stl_mesh_filename">stl_mesh_filename() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_connected_components">store_connected_components() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_convex_pieces">store_convex_pieces() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_grasp_metrics">store_grasp_metrics() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_grasps">store_grasps() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_mesh">store_mesh() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_object_metadata">store_object_metadata() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_rendered_images">store_rendered_images() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.store_stable_poses">store_stable_poses() (dexnet.database.Hdf5Dataset method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.subset">subset() (dexnet.database.Hdf5Dataset method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.Contact3D.surface_information">surface_information() (dexnet.grasping.Contact3D method)</a>
 
@@ -1266,8 +1476,6 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.ParallelJawPtGrasp3D.unrotated_full_axis">unrotated_full_axis (dexnet.grasping.ParallelJawPtGrasp3D attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/learning.html#dexnet.learning.BernoulliModel.update">update() (dexnet.learning.BernoulliModel method)</a>
 
       <ul>
@@ -1280,6 +1488,10 @@
         <li><a href="api/learning.html#dexnet.learning.Model.update">(dexnet.learning.Model method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/database.html#dexnet.database.Hdf5Dataset.urdf_mesh_filename">urdf_mesh_filename() (dexnet.database.Hdf5Dataset method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1308,8 +1520,6 @@
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.AntipodalGraspSampler.within_cone">within_cone() (dexnet.grasping.AntipodalGraspSampler method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.wrench_in_positive_span">wrench_in_positive_span() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.wrench_resistance">wrench_resistance() (dexnet.grasping.PointGraspMetrics3D static method)</a>
@@ -1317,6 +1527,24 @@
       <li><a href="api/grasping.html#dexnet.grasping.PointGraspMetrics3D.wrench_volume">wrench_volume() (dexnet.grasping.PointGraspMetrics3D static method)</a>
 </li>
       <li><a href="api/learning.html#dexnet.learning.TensorDataset.write">write() (dexnet.learning.TensorDataset method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_connected_components">write_connected_components() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_grasp_metrics">write_grasp_metrics() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_grasps">write_grasps() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_mesh_3d">write_mesh_3d() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_object_metadata">write_object_metadata() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_rendered_images">write_rendered_images() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_sdf_3d">write_sdf_3d() (dexnet.database.Hdf5ObjectFactory static method)</a>
+</li>
+      <li><a href="api/database.html#dexnet.database.Hdf5ObjectFactory.write_stable_poses">write_stable_poses() (dexnet.database.Hdf5ObjectFactory static method)</a>
 </li>
   </ul></td>
 </tr></table>

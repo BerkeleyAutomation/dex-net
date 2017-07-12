@@ -10,6 +10,11 @@ Overview
 --------
 The `dex-net` package contains a Python API for managing HDF5 databases of 3D object models, parallel-jaw grasps, and grasp robustness metrics from used in the `Dex-Net 2.0 paper`_. The package supports reading the `Dex-Net 2.0 HDF5 Database`_ containing parallel-jaw grasps for the ABB YuMi across 1,500 object models from the `Dex-Net Object Mesh Dataset v1.1`_, and also supports the creation of databases with custom datasets of object models. The package is part of the `Dexterity Network (Dex-Net)`_ project and is maintained by the `Berkeley AUTOLAB`_.
 
+See the `installation instructions`_ and `tutorials`_ to get started!
+
+.. _installation instructions: https://berkeleyautomation.github.io/dex-net/install/install.html
+.. _tutorials: https://berkeleyautomation.github.io/dex-net/tutorials/tutorial.html
+
 Links
 -----
 * `Source Code`_
