@@ -57,7 +57,7 @@ gh-pages:
 	git checkout master $(GH_PAGES_SOURCES) && \
 	git reset HEAD && \
 	cd docs && \
-	make html && \
+	sh build_docs.sh && \
 	cd .. && \
 	mv -fv docs/build/html/* ./ && \
 	mv -fv docs/source/static_content/* ./ && \
