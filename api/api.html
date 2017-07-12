@@ -187,25 +187,25 @@
   <div class="section" id="dexnet">
 <h1>DexNet<a class="headerlink" href="#dexnet" title="Permalink to this headline">¶</a></h1>
 <p>Class containing the high-level API for generating and reading Dex-Net databases.</p>
-<dl class="class">
-<dt id="dexnet.DexNet">
-<em class="property">class </em><code class="descclassname">dexnet.</code><code class="descname">DexNet</code><a class="headerlink" href="#dexnet.DexNet" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-dexnet.api"></span><dl class="class">
+<dt id="dexnet.api.DexNet">
+<em class="property">class </em><code class="descclassname">dexnet.api.</code><code class="descname">DexNet</code><a class="headerlink" href="#dexnet.api.DexNet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class providing an interface for main DexNet pipeline</p>
 <dl class="attribute">
-<dt id="DexNet.database">
-<code class="descname">database</code><a class="headerlink" href="#DexNet.database" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.api.DexNet.database">
+<code class="descname">database</code><a class="headerlink" href="#dexnet.api.DexNet.database" title="Permalink to this definition">¶</a></dt>
 <dd><p>:obj:<a href="#id1"><span class="problematic" id="id2">`</span></a>dexnet.database.Database – Current active database. Can set manually, or with open_database</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="DexNet.dataset">
-<code class="descname">dataset</code><a class="headerlink" href="#DexNet.dataset" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.api.DexNet.dataset">
+<code class="descname">dataset</code><a class="headerlink" href="#dexnet.api.DexNet.dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>:obj:<a href="#id3"><span class="problematic" id="id4">`</span></a>dexnet.database.Dataset – Current active dataset. Can set manually, or with open_dataset</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="DexNet.default_config">
-<code class="descname">default_config</code><a class="headerlink" href="#DexNet.default_config" title="Permalink to this definition">¶</a></dt>
+<dt id="dexnet.api.DexNet.default_config">
+<code class="descname">default_config</code><a class="headerlink" href="#dexnet.api.DexNet.default_config" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-obj docutils literal"><span class="pre">dictionary</span></code> – A dictionary containing default config values
 See Other Parameters for details. These parameters are also listed under the function(s) they are relevant to
 Also, see:</p>
@@ -243,6 +243,521 @@ For available metrics and their config parameters see dexnet.grasping.grasp_qual
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="dexnet.api.DexNet.add_object">
+<code class="descname">add_object</code><span class="sig-paren">(</span><em>filepath</em>, <em>config=None</em>, <em>mass=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.add_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add graspable object to current open dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filepath</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Path to mesh file</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Dictionary of parameters for mesh creating/processing
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.
+See dexnet.database.mesh_processor.py for details on the parameters available for mesh processor</li>
+<li><strong>name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name to use for graspable. If None defaults to the name of the obj file provided in filepath</li>
+<li><strong>mass</strong> (<em>float</em>) – Mass of object. Gets clobbered if use_default_mass is set in config.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>cache_dir</strong> – Cache directory for mesh processor to store intermediate files. If None uses a temporary directory</li>
+<li><strong>use_default_mass</strong> – If True, clobbers mass and uses default_mass as mass always</li>
+<li><strong>default_mass</strong> – Default mass value if mass is not given, or if use_default_mass is set</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Graspable with same name already in database.
+Database or dataset not opened.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.compute_metadata">
+<code class="descname">compute_metadata</code><span class="sig-paren">(</span><em>object_name</em>, <em>config=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.compute_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute metadata for object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object name to compute metadata for</li>
+<li><strong>overwrite</strong> (<em>boolean</em>) – If True, overwrites existing metadata. Otherwise, logs a warning and keeps existing metadata</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.compute_metrics">
+<code class="descname">compute_metrics</code><span class="sig-paren">(</span><em>config=None</em>, <em>metric_name=None</em>, <em>object_name=None</em>, <em>gripper_name=None</em>, <em>stable_pose=None</em>, <em>overwrite=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.compute_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute metrics for an object or the entire dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for metric computation.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+<li><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Metric to compute grasps for. If None does all metrics</li>
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object key to compute a grasp for. If None does the whole dataset</li>
+<li><strong>gripper_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Gripper to compute a grasp for. If None does all grippers</li>
+<li><strong>stable_pose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – ID of stable pose to use. If None does all stable poses.
+Note that setting this does not make sense if obj_name is None</li>
+<li><strong>overwrite</strong> (<em>boolean</em>) – If True, overwrites existing computed metrics. Otherwise logs a warning and keeps existing values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>gripper_dir</strong> – Directory where the grippers models and parameters are</li>
+<li><strong>metric_display_rate</strong> – Number of grasps to compute metrics for before logging a line</li>
+<li><strong>gravity_accel</strong> – Gravity acceleration for computing gravity-based metrics</li>
+<li><strong>metrics</strong> – Dictionary mapping metric names to metric config dicts
+For available metrics and their config parameters see dexnet.grasping.grasp_quality_config</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – invalid metric, object or gripper name</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeWarning</span></code> – Grasps do not exist for given gripper on given object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.compute_simulation_data">
+<code class="descname">compute_simulation_data</code><span class="sig-paren">(</span><em>object_name</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.compute_simulation_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute normals and convex decomposition for object (preprocessing for simulation)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object_name</strong> – Object to compute normals and convex decomposition for</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for computing simulation data.            Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>cache_dir</strong> – Cache directory for to store intermediate files. If None uses a temporary directory</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.delete_object">
+<code class="descname">delete_object</code><span class="sig-paren">(</span><em>object_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.delete_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object to delete</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – invalid object name</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.display_grasps">
+<code class="descname">display_grasps</code><span class="sig-paren">(</span><em>object_name</em>, <em>gripper_name</em>, <em>metric_name</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.display_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display grasps for an object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object to display</li>
+<li><strong>gripper_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Gripper for which to display grasps</li>
+<li><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Metric to color/rank grasps with</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for visualization.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>gripper_dir</strong> – Directory where the grippers models and parameters are.</li>
+<li><strong>quality_scale</strong> – Range to scale quality metric values to</li>
+<li><strong>show_gripper</strong> – Whether or not to show the gripper in the visualization</li>
+<li><strong>min_metric</strong> – lowest value of metric to show grasps for</li>
+<li><strong>max_plot_gripper</strong> – Number of grasps to plot</li>
+<li><strong>animate</strong> – Whether or not to animate the displayed object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.display_object">
+<code class="descname">display_object</code><span class="sig-paren">(</span><em>object_name</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.display_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display an object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Ob
+ject to display.</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for visualization.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>animate</strong> – Whether or not to animate the displayed object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – invalid object name</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.display_stable_poses">
+<code class="descname">display_stable_poses</code><span class="sig-paren">(</span><em>object_name</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.display_stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display an object’s stable poses</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object to display.</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for visualization.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>animate</strong> – Whether or not to animate the displayed object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – invalid object name</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.export_objects">
+<code class="descname">export_objects</code><span class="sig-paren">(</span><em>output_dir</em>, <em>export_filters={}</em>, <em>to_export=None</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.export_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export objects as .obj files to a directory. Provides filtering ability to only export some objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>output_dir</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Directory to output to objects to</li>
+<li><strong>export_filters</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code> mapping <code class="xref py py-obj docutils literal"><span class="pre">str</span></code> to :obj:function) – Functions to filter with. Each function takes in the metadata with its key as the key associated with each
+object and returns True or False. If True exports object, if False doesn’t.
+Example: {‘num_con_comps’ : (lambda x: x == 1)} will export only objects with exactly one connected component</li>
+<li><strong>to_export</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – List of objects to export. If None exports all objects in dataset</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for computing simulation data.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>export_format</strong> – Format for export. One of obj, stl, urdf</li>
+<li><strong>export_scale</strong> – Scale for export.</li>
+<li><strong>export_overwrite</strong> – If True, will overwrite existing files</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – Export format not supported</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.get_grasps">
+<code class="descname">get_grasps</code><span class="sig-paren">(</span><em>object_name</em>, <em>gripper_name</em>, <em>metric_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.get_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of grasps for the given graspable sorted by decreasing quality according to the given metric.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of object to get grasps for</li>
+<li><strong>gripper_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of gripper</li>
+<li><strong>metric_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – name of metric to use for sorting. If None does not sort grasps</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference internal" href="grasping.html#dexnet.grasping.ParallelJawPtGrasp3D" title="dexnet.grasping.ParallelJawPtGrasp3D"><code class="xref py py-obj docutils literal"><span class="pre">dexnet.grasping.ParallelJawPtGrasp3D</span></code></a> – stored grasps for the object and gripper sorted by metric in descending order, empty list if gripper not found</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of float – values of metrics for the grasps sorted in descending order, empty list if gripper not found or if metric_name not given</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.get_metadata">
+<code class="descname">get_metadata</code><span class="sig-paren">(</span><em>object_name</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get metadata for object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – object name to get metadata for</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Database or dataset not opened.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.get_object">
+<code class="descname">get_object</code><span class="sig-paren">(</span><em>object_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an object from current dataset by name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name of object to get</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Specified object</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">Mesh3D</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.get_stable_poses">
+<code class="descname">get_stable_poses</code><span class="sig-paren">(</span><em>object_name</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.get_stable_poses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get stable poses for an object by name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name of object to get</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stable poses of object</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">meshpy.StablePose</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.list_grippers">
+<code class="descname">list_grippers</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.list_grippers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available grippers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>gripper_dir</strong> – Directory where the grippers models and parameters are</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.list_metadata">
+<code class="descname">list_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.list_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available metadata names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of metadata names</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.list_metrics">
+<code class="descname">list_metrics</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.list_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available metrics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict.
+Parameters are in Other parameters. Values from self.default_config are used for keys not provided.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>metrics</strong> – Dictionary mapping metric names to metric config dicts</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of metric names</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.list_objects">
+<code class="descname">list_objects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.list_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available objects in current dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of objects in current dataset</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">str</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.open_database">
+<code class="descname">open_database</code><span class="sig-paren">(</span><em>database_path</em>, <em>config=None</em>, <em>create_db=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.open_database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open/create a database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>database_path</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Path (can be relative) to the database, or the path to create a database at.</li>
+<li><strong>create_db</strong> (<em>boolean</em>) – If True, creates database if one does not exist at location specified.
+If False, raises error if database does not exist at location specified.</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Dictionary of parameters for database creation
+Parameters are in Other Parameters. Values from self.default_config are used for keys not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>cache_dir</strong> – Cache directory for to store intermediate files. If None uses a temporary directory</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If database_path does not have an extension corresponding to a hdf5 database.
+If database does not exist at path and create_db is False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.open_dataset">
+<code class="descname">open_dataset</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>config=None</em>, <em>create_ds=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.open_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open/create a dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Name of dataset to open/create</li>
+<li><strong>create_ds</strong> (<em>boolean</em>) – If True, creates dataset if one does not exist with name specified.
+If False, raises error if specified dataset does not exist</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Dictionary containing a key ‘metrics’ that maps to a dictionary mapping metric names to metric config dicts
+For available metrics and their corresponding config parameters see dexnet.grasping.grasp_quality_config
+Values from self.default_config are used for keys not provided</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If dataset_name is invalid. Also if dataset does not exist and create_ds is False</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – No database open</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dexnet.api.DexNet.sample_grasps">
+<code class="descname">sample_grasps</code><span class="sig-paren">(</span><em>config=None</em>, <em>object_name=None</em>, <em>gripper_name=None</em>, <em>overwrite=True</em>, <em>stable_pose=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dexnet.api.DexNet.sample_grasps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample grasps for an object or the entire dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – Configuration dict for grasping. The required Parameters are in ‘Other Parameters’.
+Values from self.default_config are used for keys not provided.</li>
+<li><strong>object_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Object key to compute a grasp for. If None does the whole dataset</li>
+<li><strong>gripper_name</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – Gripper to compute a grasp for. If None does all grippers</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – If True, overwrites existing grasps. Otherwise logs a warning and keeps existing grasps</li>
+<li><strong>stable_pose</strong> (<code class="xref py py-obj docutils literal"><span class="pre">str</span></code>) – ID of stable pose to use. If None does all stable poses.
+Note that setting this does not make sense if obj_name is None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>grasp_sampler</strong> – type of grasp sampler to use. One of {‘antipodal’, ‘gaussian’, ‘uniform’}.</li>
+<li><strong>max_grasp_sampling_iters</strong> – number of attempts to return an exact number of grasps before giving up</li>
+<li><strong>gripper_dir</strong> – Directory where the grippers models and parameters are.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – invalid object or gripper name</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – Grasps already exist for given object and gripper, and overwrite is False
+Database or dataset not opened.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
