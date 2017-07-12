@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tools &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="DexNet" href="../api/api.html"/>
+        <link rel="prev" title="Examples" href="examples.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#documentation">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-generate_gqcnn_dataset">generate_gqcnn_dataset.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#author">Author</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yaml-configuration-file-parameters">YAML Configuration File Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-visualize_gqcnn_dataset">visualize_gqcnn_dataset.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Author</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">DexNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/database.html">database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/learning.html">learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/visualization.html">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>Tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/scripts/tools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-generate_gqcnn_dataset">
+<span id="generate-gqcnn-dataset-py"></span><h2>generate_gqcnn_dataset.py<a class="headerlink" href="#module-generate_gqcnn_dataset" title="Permalink to this headline">¶</a></h2>
+<p>Generates datasets of synthetic point clouds, grasps, and grasp robustness metrics from a Dex-Net HDF5 database for GQ-CNN training.</p>
+<div class="section" id="author">
+<h3>Author<a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h3>
+<p>Jeff Mahler</p>
+</div>
+<div class="section" id="yaml-configuration-file-parameters">
+<h3>YAML Configuration File Parameters<a class="headerlink" href="#yaml-configuration-file-parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>database_name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>full path to a Dex-Net HDF5 database</dd>
+<dt>target_object_keys <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref py py-obj docutils literal"><span class="pre">OrderedDict</span></code></span></dt>
+<dd>dictionary mapping dataset names to target objects (either ‘all’ or a list of specific object keys)</dd>
+<dt>env_rv_params <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref py py-obj docutils literal"><span class="pre">OrderedDict</span></code></span></dt>
+<dd>parameters of the camera and object random variables used in sampling (see meshpy.UniformPlanarWorksurfaceImageRandomVariable for more info)</dd>
+<dt>gripper_name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>name of the gripper to use</dd>
+</dl>
+</div>
+<dl class="function">
+<dt id="generate_gqcnn_dataset.generate_gqcnn_dataset">
+<code class="descclassname">generate_gqcnn_dataset.</code><code class="descname">generate_gqcnn_dataset</code><span class="sig-paren">(</span><em>dataset_path</em>, <em>database</em>, <em>target_object_keys</em>, <em>env_rv_params</em>, <em>gripper_name</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#generate_gqcnn_dataset.generate_gqcnn_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a GQ-CNN TensorDataset for training models with new grippers, quality metrics, objects, and cameras.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataset_path</strong> (<em>str</em>) – path to save the dataset to</li>
+<li><strong>database</strong> (<code class="xref py py-obj docutils literal"><span class="pre">Hdf5Database</span></code>) – Dex-Net database containing the 3D meshes, grasps, and grasp metrics</li>
+<li><strong>target_object_keys</strong> (<code class="xref py py-obj docutils literal"><span class="pre">OrderedDict</span></code>) – dictionary mapping dataset names to target objects (either ‘all’ or a list of specific object keys)</li>
+<li><strong>env_rv_params</strong> (<code class="xref py py-obj docutils literal"><span class="pre">OrderedDict</span></code>) – parameters of the camera and object random variables used in sampling (see meshpy.UniformPlanarWorksurfaceImageRandomVariable for more info)</li>
+<li><strong>gripper_name</strong> (<em>str</em>) – name of the gripper to use</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">autolab_core.YamlConfig</span></code>) – other parameters for dataset generation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Required parameters of config are specified in Other Parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>images_per_stable_pose</strong> (<em>int</em>) – number of object and camera poses to sample for each stable pose</li>
+<li><strong>stable_pose_min_p</strong> (<em>float</em>) – minimum probability of occurrence for a stable pose to be used in data generation (used to prune bad stable poses</li>
+<li><strong>gqcnn/crop_width</strong> (<em>int</em>) – width, in pixels, of crop region around each grasp center, before resize (changes the size of the region seen by the GQ-CNN)</li>
+<li><strong>gqcnn/crop_height</strong> (<em>int</em>) – height, in pixels,  of crop region around each grasp center, before resize (changes the size of the region seen by the GQ-CNN)</li>
+<li><strong>gqcnn/final_width</strong> (<em>int</em>) – width, in pixels,  of final transformed grasp image for input to the GQ-CNN (defaults to 32)</li>
+<li><strong>gqcnn/final_height</strong> (<em>int</em>) – height, in pixels,  of final transformed grasp image for input to the GQ-CNN (defaults to 32)</li>
+<li><strong>table_alignment/max_approach_table_angle</strong> (<em>float</em>) – max angle between the grasp axis and the table normal when the grasp approach is maximally aligned with the table normal</li>
+<li><strong>table_alignment/max_approach_offset</strong> (<em>float</em>) – max deviation from perpendicular approach direction to use in grasp collision checking</li>
+<li><strong>table_alignment/num_approach_offset_samples</strong> (<em>int</em>) – number of approach samples to use in collision checking</li>
+<li><strong>collision_checking/table_offset</strong> (<em>float</em>) – max allowable interpenetration between the gripper and table to be considered collision free</li>
+<li><strong>collision_checking/table_mesh_filename</strong> (<em>str</em>) – path to a table mesh for collision checking (default data/meshes/table.obj)</li>
+<li><strong>collision_checking/approach_dist</strong> (<em>float</em>) – distance, in meters, between the approach pose and final grasp pose along the grasp axis</li>
+<li><strong>collision_checking/delta_approach</strong> (<em>float</em>) – amount, in meters, to discretize the straight-line path from the gripper approach pose to the final grasp pose</li>
+<li><strong>tensors/datapoints_per_file</strong> (<em>int</em>) – number of datapoints to store in each unique tensor file on disk</li>
+<li><strong>tensors/fields</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – dictionary mapping field names to dictionaries specifying the data type, height, width, and number of channels for each tensor</li>
+<li><strong>debug</strong> (<em>bool</em>) – True (or 1) if the random seed should be set to enforce deterministic behavior, False (0) otherwise</li>
+<li><strong>vis/candidate_grasps</strong> (<em>bool</em>) – True (or 1) if the collision free candidate grasps should be displayed in 3D (for debugging)</li>
+<li><strong>vis/rendered_images</strong> (<em>bool</em>) – True (or 1) if the rendered images for each stable pose should be displayed (for debugging)</li>
+<li><strong>vis/grasp_images</strong> (<em>bool</em>) – True (or 1) if the transformed grasp images should be displayed (for debugging)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-visualize_gqcnn_dataset">
+<span id="visualize-gqcnn-dataset-py"></span><h2>visualize_gqcnn_dataset.py<a class="headerlink" href="#module-visualize_gqcnn_dataset" title="Permalink to this headline">¶</a></h2>
+<p>Visualizes point clouds from a generated GQ-CNN training dataset, optionally filtering by the grasp robustness metrics.</p>
+<div class="section" id="id1">
+<h3>Author<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Jeff Mahler</p>
+</div>
+<dl class="function">
+<dt id="visualize_gqcnn_dataset.visualize_tensor_dataset">
+<code class="descclassname">visualize_gqcnn_dataset.</code><code class="descname">visualize_tensor_dataset</code><span class="sig-paren">(</span><em>dataset</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#visualize_gqcnn_dataset.visualize_tensor_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes a Tensor dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataset</strong> (<code class="xref py py-obj docutils literal"><span class="pre">TensorDataset</span></code>) – dataset to visualize</li>
+<li><strong>config</strong> (<code class="xref py py-obj docutils literal"><span class="pre">autolab_core.YamlConfig</span></code>) – parameters for visualization</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Required parameters of config are specified in Other Parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>field_name</strong> (<em>str</em>) – name of the field in the TensorDataset to visualize (defaults to depth_ims_tf_table, which is a single view point cloud of the object on a table)</li>
+<li><strong>field_type</strong> (<em>str</em>) – type of image that the field name correspondes to (defaults to depth, can also be <cite>segmask</cite> if using the field <cite>object_masks</cite>)</li>
+<li><strong>print_fields</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of str) – names of additiona fields to print to the command line</li>
+<li><strong>filter</strong> (<code class="xref py py-obj docutils literal"><span class="pre">dict</span></code> mapping str to <code class="xref py py-obj docutils literal"><span class="pre">dict</span></code>) – contraints that all displayed datapoints must satisfy (supports any univariate field name as a key and numeric thresholds)</li>
+<li><strong>gripper_width_px</strong> (<em>float</em>) – width of the gripper to plot in pixels</li>
+<li><strong>font_size</strong> (<em>int</em>) – size of font on the rendered images</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/api.html" class="btn btn-neutral float-right" title="DexNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
