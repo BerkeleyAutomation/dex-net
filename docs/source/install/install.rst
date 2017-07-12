@@ -45,13 +45,13 @@ We highly recommend testing before using the module.
 """"""""""""""
 Go the `dex-net` `Command Line Interface (CLI) example`_ to see the basic functionality.
 
-.. _Command Line Interface (CLI) example: TODO
+.. _Command Line Interface (CLI) example: http://bit.ly/2uPEliy
 
 Issues
 ~~~~~~
 If you are having issues with the installation script, then you should try to install manually by following our `extended installation instructions`_, which include individual commands, optional dependencies, and workarounds for some known issues.
 
-.. _extended installation instructions: TODO
+.. _extended installation instructions: https://docs.google.com/document/d/1YImq1cBTy9E1n1On6-00gueDT4hfmYJK4uOcxZIzPoY/edit?usp=sharing
 
 Please raise installation issues on the `Github Issues`_.
 

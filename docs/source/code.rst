@@ -55,10 +55,12 @@ For other questions or concerns, please contact Jeff Mahler (jmahler@berkeley.ed
 
 Active developers include:
 
-* Jeff Mahler
+* `Jeff Mahler`_
 * Alan Li
 * Matt Matl
 * Vishal Satish
+
+.. _Jeff Mahler: https://www.jeff-mahler.com
 
 Academic Use
 ------------

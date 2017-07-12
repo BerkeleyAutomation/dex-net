@@ -5,5 +5,5 @@ The Dex-Net CLI includes functionality for opening, reading, and writing HDF5 da
 The tutorial is hosted `here`_.
 
 .. _tutorial: http://bit.ly/2uPEliy
-.. _dexnet_cli.py: TODO
+.. _dexnet_cli.py: https://github.com/BerkeleyAutomation/dex-net/blob/master/apps/dexnet_cli.py
 .. _here: http://bit.ly/2uPEliy

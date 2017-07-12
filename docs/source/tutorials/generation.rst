@@ -3,7 +3,7 @@ Point Cloud Dataset Generation
 Robust grasping policies based on `Grasp Quality Convolutional Neural Networks`_ (GQ-CNNs) may be useful for planning grasps on novel objects with a physical robot.
 This requires training GQ-CNNs on a dataset of synthetic point clouds, grasps, and grasp robustness metrics such as the `Dex-Net 2.0 dataset`_.
 
-It may be beneficial to train GQ-CNNs on custom robot grippers and datasets of 3D object models based on the application. To facilitate research on this topic, `dex-net` contains the script `generate_gqcnn_dataset.py` under the tools/ directory.
+It may be beneficial to train GQ-CNNs on custom robot grippers and datasets of 3D object models based on the application. To facilitate research on this topic, `dex-net` contains the script `generate_gqcnn_dataset.py`_ under the tools/ directory.
 This tutorial explains how to use this tool.
 
 .. _Grasp Quality Convolutional Neural Networks: https://berkeleyautomation.github.io/gqcnn
@@ -66,5 +66,5 @@ You should see images similar to:
    :scale: 100 %
    :align: center
 
-.. _visualize_gqcnn_dataset.py: TODO
+.. _visualize_gqcnn_dataset.py: https://github.com/BerkeleyAutomation/dex-net/blob/master/tools/visualize_gqcnn_dataset.py
 .. _parameters: ../scripts/tools.html
