@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DexNet &mdash; Dex-Net 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Dex-Net 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="database" href="database.html"/>
+        <link rel="prev" title="Tools" href="../scripts/tools.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../code.html" class="icon icon-home"> Dex-Net
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">Installation Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html#documentation">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Download Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-object-mesh-dataset-v1-1">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#dex-net-2-0-hdf5-database">Dex-Net 2.0 HDF5 Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#license">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation for Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/tools.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DexNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grasping.html">grasping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning.html">learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../code.html">Dex-Net</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../code.html">Docs</a> &raquo;</li>
+        
+      <li>DexNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dexnet">
+<h1>DexNet<a class="headerlink" href="#dexnet" title="Permalink to this headline">¶</a></h1>
+<p>Class containing the high-level API for generating and reading Dex-Net databases.</p>
+<dl class="class">
+<dt id="dexnet.DexNet">
+<em class="property">class </em><code class="descclassname">dexnet.</code><code class="descname">DexNet</code><a class="headerlink" href="#dexnet.DexNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class providing an interface for main DexNet pipeline</p>
+<dl class="attribute">
+<dt id="DexNet.database">
+<code class="descname">database</code><a class="headerlink" href="#DexNet.database" title="Permalink to this definition">¶</a></dt>
+<dd><p>:obj:<a href="#id1"><span class="problematic" id="id2">`</span></a>dexnet.database.Database – Current active database. Can set manually, or with open_database</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DexNet.dataset">
+<code class="descname">dataset</code><a class="headerlink" href="#DexNet.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>:obj:<a href="#id3"><span class="problematic" id="id4">`</span></a>dexnet.database.Dataset – Current active dataset. Can set manually, or with open_dataset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DexNet.default_config">
+<code class="descname">default_config</code><a class="headerlink" href="#DexNet.default_config" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal"><span class="pre">dictionary</span></code> – A dictionary containing default config values
+See Other Parameters for details. These parameters are also listed under the function(s) they are relevant to
+Also, see:</p>
+<blockquote>
+<div>dexnet.grasping.grasp_quality_config for metrics and their associated configs
+dexnet.database.mesh_processor for configs associated with initial mesh processing</div></blockquote>
+</dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>cache_dir</strong> – Cache directory for to store intermediate files. If None uses a temporary directory</li>
+<li><strong>use_default_mass</strong> – If True, clobbers mass and uses default_mass as mass always</li>
+<li><strong>default_mass</strong> – Default mass value if mass is not given, or if use_default_mass is set</li>
+<li><strong>gripper_dir</strong> – Directory where the grippers models and parameters are</li>
+<li><strong>metric_display_rate</strong> – Number of grasps to compute metrics for before logging a line</li>
+<li><strong>gravity_accel</strong> – Gravity acceleration for computing gravity-based metrics</li>
+<li><strong>metrics</strong> – Dictionary mapping metric names to metric config dicts
+For available metrics and their config parameters see dexnet.grasping.grasp_quality_config</li>
+<li><strong>grasp_sampler</strong> – type of grasp sampler to use. One of {‘antipodal’, ‘gaussian’, ‘uniform’}.</li>
+<li><strong>max_grasp_sampling_iters</strong> – number of attempts to return an exact number of grasps before giving up</li>
+<li><strong>export_format</strong> – Format for export. One of obj, stl, urdf</li>
+<li><strong>export_scale</strong> – Scale for export.</li>
+<li><strong>export_overwrite</strong> – If True, will overwrite existing files</li>
+<li><strong>animate</strong> – Whether or not to animate the displayed object</li>
+<li><strong>quality_scale</strong> – Range to scale quality metric values to</li>
+<li><strong>show_gripper</strong> – Whether or not to show the gripper in the visualization</li>
+<li><strong>min_metric</strong> – lowest value of metric to show grasps for</li>
+<li><strong>max_plot_gripper</strong> – Number of grasps to plot</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="database.html" class="btn btn-neutral float-right" title="database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../scripts/tools.html" class="btn btn-neutral" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Mahler.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
