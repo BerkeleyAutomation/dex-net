@@ -210,16 +210,20 @@ We suggest installing as a standalone Python module unless you want to use <cite
 <div class="section" id="run-the-installation-script">
 <h2>2. Run the installation script<a class="headerlink" href="#run-the-installation-script" title="Permalink to this headline">¶</a></h2>
 <p>Run the <cite>dex-net</cite> installation helper script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$sudo sh install.sh {cpu|gpu} {python|ros}
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo sh install.sh {cpu|gpu} {python|ros}
 </pre></div>
 </div>
 <p>The brackets indicate optional arguments to switch installation methods.</p>
-<p>The first argument specifies the version:
-* <strong>cpu:</strong> no TensorFlow GPU support
-* <strong>gpu:</strong> TensorFlow GPU support for GQ-CNN training</p>
-<p>The second argument specifies the installation mode:
-* <strong>python:</strong> Python-only installation. No ROS services will be installed for <cite>dex-net</cite> or any of the Berkeley AUTOLAB modules.
-* <strong>ros:</strong> Installation as a ROS package. Enables ROS services for the Berkeley AUTOLAB modules and supports <cite>dex-net</cite> ROS nodes and services that may be developed in the future.</p>
+<p>The first argument specifies the version:</p>
+<ul class="simple">
+<li><strong>cpu:</strong> no TensorFlow GPU support</li>
+<li><strong>gpu:</strong> TensorFlow GPU support for GQ-CNN training</li>
+</ul>
+<p>The second argument specifies the installation mode:</p>
+<ul class="simple">
+<li><strong>python:</strong> Python-only installation. No ROS services will be installed for <cite>dex-net</cite> or any of the Berkeley AUTOLAB modules.</li>
+<li><strong>ros:</strong> Installation as a ROS package. Enables ROS services for the Berkeley AUTOLAB modules and supports <cite>dex-net</cite> ROS nodes and services that may be developed in the future.</li>
+</ul>
 </div>
 <div class="section" id="test-the-installation">
 <h2>3. Test the installation<a class="headerlink" href="#test-the-installation" title="Permalink to this headline">¶</a></h2>
