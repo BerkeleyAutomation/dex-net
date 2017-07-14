@@ -20,12 +20,14 @@ Links
 * `Source Code`_
 * `Dex-Net 2.0 HDF5 Database`_
 * `Dex-Net Object Mesh Dataset v1.1`_
+* `Dex-Net 2.0 Paper`_
 * `Dex-Net Website`_
 * `UC Berkeley AUTOLAB`_
 
 .. _Source Code: https://github.com/BerkeleyAutomation/dex-net
 .. _Dex-Net 2.0 HDF5 Database: http://bit.ly/2vb3OCz
 .. _Dex-Net Object Mesh Dataset v1.1 : http://bit.ly/2tLnRrQ
+.. _Dex-Net 2.0 Paper: https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_rss2017_final.pdf
 .. _Dex-Net Website: https://berkeleyautomation.github.io/dex-net
 .. _UC Berkeley AUTOLAB: http://autolab.berkeley.edu
 
@@ -42,14 +44,15 @@ The goals of this project are to facilitate:
 1) **Replicability** of results from the `Dex-Net 2.0 paper`_.
 2) **Research extensions** on using synthetic datasets of 3D object models with physics-based robustness metrics as a prior for robot grasping and manipulation.
 
-Disclaimer
-----------
-Grasp robustness metrics from the `dex-net` are only known to correlate with successfully lifting and transporting objects on a physical robot for:
+System Requirements
+-------------------
+Grasp robustness metrics from the `dex-net` are only known to predict success for lifting and transporting objects on a physical robot with:
 
 1) An ABB YuMi robot with a custom parallel-jaw gripper with silicone tips.
 2) Test objects from the `Dex-Net 2.0 paper`_, which (a) have available grasps in every resting pose (e.g. not flat against the table), (b) weigh less than 0.25kg, the payload of the YuMi, and (c) are partially opaque to enable measurement with a depth sensor.
 
 We are currently researching how to generate databases that can generalize across robots and additional objects.
+If you are interested in this functionality, please email Jeff Mahler (jmahler@berkeley.edu) with the subject line "Interested in GQ-CNN Dataset Generation."
 
 Development
 -----------
