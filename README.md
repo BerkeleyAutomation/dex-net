@@ -21,3 +21,8 @@ See [the documentation](https://berkeleyautomation.github.io/dex-net/code.html) 
 
 ## Datasets
 The Dex-Net Object Mesh Dataset v1.1 and Dex-Net 2.0 HDF5 database can be downloaded from [the data repository](http://bit.ly/2uh07i9).
+
+## Parallel-Jaw Gripper
+The repository currently supports our custom ABB YuMi gripper and the Baxter gripper.
+If you are interested in additional parallel-jaw grippers, please email Jeff Mahler (jmahler@berkeley.edu) with the subject line: "Interested in Contributing to the Dex-Net Grippers" with a description of the parallel-jaw gripper you'd like to add.
+
