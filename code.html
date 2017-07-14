@@ -196,6 +196,7 @@
 <li><a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net">Source Code</a></li>
 <li><a class="reference external" href="http://bit.ly/2vb3OCz">Dex-Net 2.0 HDF5 Database</a></li>
 <li><a class="reference external" href="http://bit.ly/2tLnRrQ">Dex-Net Object Mesh Dataset v1.1</a></li>
+<li><a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_rss2017_final.pdf">Dex-Net 2.0 Paper</a></li>
 <li><a class="reference external" href="https://berkeleyautomation.github.io/dex-net">Dex-Net Website</a></li>
 <li><a class="reference external" href="http://autolab.berkeley.edu">UC Berkeley AUTOLAB</a></li>
 </ul>
@@ -209,14 +210,15 @@
 <li><strong>Research extensions</strong> on using synthetic datasets of 3D object models with physics-based robustness metrics as a prior for robot grasping and manipulation.</li>
 </ol>
 </div>
-<div class="section" id="disclaimer">
-<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h2>
-<p>Grasp robustness metrics from the <cite>dex-net</cite> are only known to correlate with successfully lifting and transporting objects on a physical robot for:</p>
+<div class="section" id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Grasp robustness metrics from the <cite>dex-net</cite> are only known to predict success for lifting and transporting objects on a physical robot with:</p>
 <ol class="arabic simple">
 <li>An ABB YuMi robot with a custom parallel-jaw gripper with silicone tips.</li>
 <li>Test objects from the <a class="reference external" href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_rss2017_final.pdf">Dex-Net 2.0 paper</a>, which (a) have available grasps in every resting pose (e.g. not flat against the table), (b) weigh less than 0.25kg, the payload of the YuMi, and (c) are partially opaque to enable measurement with a depth sensor.</li>
 </ol>
-<p>We are currently researching how to generate databases that can generalize across robots and additional objects.</p>
+<p>We are currently researching how to generate databases that can generalize across robots and additional objects.
+If you are interested in this functionality, please email Jeff Mahler (<a class="reference external" href="mailto:jmahler&#37;&#52;&#48;berkeley&#46;edu">jmahler<span>&#64;</span>berkeley<span>&#46;</span>edu</a>) with the subject line “Interested in GQ-CNN Dataset Generation.”</p>
 </div>
 <div class="section" id="development">
 <h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
@@ -276,14 +278,7 @@ If you use the 3D object models, then we recommend that you also cite the origin
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html#database-manipulation">Database Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorial.html#install-openrave">Install OpenRAVE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorial.html#download-the-example-database">Download the Example Database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorial.html#check-the-configuration-file">Check the Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorial.html#run-the-python-script">Run the Python Script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorial.html#visualize-the-dataset">Visualize the Dataset</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html#point-cloud-dataset-generation">Point Cloud Dataset Generation</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -294,7 +289,6 @@ If you use the 3D object models, then we recommend that you also cite the origin
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scripts/tools.html">Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scripts/tools.html#module-generate_gqcnn_dataset">generate_gqcnn_dataset.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scripts/tools.html#module-visualize_gqcnn_dataset">visualize_gqcnn_dataset.py</a></li>
 </ul>
 </li>

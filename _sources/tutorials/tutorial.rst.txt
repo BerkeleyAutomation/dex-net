@@ -1,11 +1,8 @@
 Overview
 --------
-The tutorial covers the two main use cases of the `dex-net` package:
+The tutorial covers the main use cases of the `dex-net` package: :ref:`database manipulation` through the `dex-net` Command Line Interface (CLI).
 
-1) :ref:`database manipulation` through the `dex-net` Command Line Interface (CLI).
-2) :ref:`point cloud dataset generation` for training GQ-CNNs on new datasets of object models.
-
-Click on the links or scroll down to get started!
+Click on the link or scroll down to get started!
 
 Running Python Scripts
 ~~~~~~~~~~~~~~~~~~~~~~
