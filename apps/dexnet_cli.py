@@ -260,8 +260,9 @@ class DexNet_cli(object):
         object_path = self._get_checked_input(lambda x: os.path.splitext(x)[1] in SUPPORTED_MESH_FORMATS + [''],
                                            "path to a mesh file or directory")
         if object_path is None: return True
-        if os.path.isdir(os.path.realpath(object_path)):
-            obj_filenames = [fname for fname in os.listdir(os.path.realpath(object_path))
+        object_path = os.path.realpath(object_path)
+        if os.path.isdir(object_path):
+            obj_filenames = [object_path + "/" + fname for fname in os.listdir(object_path)
                              if os.path.splitext(fname)[1] in SUPPORTED_MESH_FORMATS]
         else:
             obj_filenames = [object_path]
@@ -515,4 +516,3 @@ if __name__ == '__main__':
 
         # get user input
         continue_dexnet = dexnet_cli.run_user_command()
-
