@@ -446,7 +446,8 @@ class DexNet(object):
             Directory where the grippers models and parameters are
         """
         config = self._get_config(config)
-        return os.listdir(config['gripper_dir'])
+        gripper_dir = config['gripper_dir']
+        return [gripper for gripper in os.listdir(gripper_dir) if os.path.isdir(os.path.join(gripper_dir, gripper))]
         
     def list_metrics(self, config=None):
         """List available metrics
