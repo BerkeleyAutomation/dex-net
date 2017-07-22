@@ -2,9 +2,6 @@
 Command line tool for using database
 Author: Jeff Mahler
 """
-import sys
-sys.path.append('/home/dexnet/dexnet-install/dex-net-public/dex-net/src/')
-
 import argparse
 import collections
 import IPython
