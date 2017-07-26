@@ -522,7 +522,7 @@ class DexNet(object):
             Stable poses of object
         """
         self._check_opens()
-        return self.dataset.stable_poses()
+        return self.dataset.stable_poses(object_name)
     
     def get_grasps(self, object_name, gripper_name, metric_name=None):
         """ Returns the list of grasps for the given graspable sorted by decreasing quality according to the given metric.
