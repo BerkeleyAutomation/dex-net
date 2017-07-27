@@ -6,7 +6,7 @@ ILLEGAL_DB_NAME = 'data/test/database/asdfasdf.asdfas'
 
 OBJ_FILENAME = 'data/test/models/bar_clamp.obj'
 SDF_FILENAME = 'data/test/models/bar_clamp.sdf'
-GRIPPER_NAME = 'zeke'
+GRIPPER_NAME = 'yumi_metal_spline'
 
 NUM_TEST_CASES = 100
 NUM_DB_GRASPS = 10
