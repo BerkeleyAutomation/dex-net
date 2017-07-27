@@ -32,6 +32,6 @@ The repository currently supports our custom ABB YuMi gripper.
 If you are interested in additional parallel-jaw grippers, please email Jeff Mahler (jmahler@berkeley.edu) with the subject line: "Interested in Contributing to the Dex-Net Grippers" with a description of the parallel-jaw gripper you'd like to add.
 
 ## Custom Database Generation
-The current Dex-Net repo does not support the creation of new databases of objects, grasps, and grasp metrics. We plan to release this functionality via an HTTP service in Fall 2017.
+The current Dex-Net API does not support the creation of new databases of objects. We plan to release this functionality via an HTTP service in Fall 2017.
 
-If you are interested in using this functionality in your research, it is available from [the custom-databases branch](https://github.com/BerkeleyAutomation/dex-net/tree/custom-databases). However, we will not provide support for this code.
+If you are interested in using this functionality for research, see [the custom-databases branch](https://github.com/BerkeleyAutomation/dex-net/tree/custom-databases). However, we cannot provide support at this time.
