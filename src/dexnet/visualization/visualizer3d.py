@@ -48,7 +48,7 @@ class DexNetVisualizer3D(Visualizer3D):
         T_gripper_world = T_obj_world * T_gripper_obj
         T_mesh_world = T_gripper_world * gripper.T_mesh_gripper.inverse()        
         T_mesh_world = T_mesh_world.as_frames('obj', 'world')
-        Visualizer3D.mesh(gripper.mesh, T_mesh_world, style='surface', color=color)
+        Visualizer3D.mesh(gripper.mesh.trimesh, T_mesh_world, style='surface', color=color)
 
     @staticmethod
     def grasp(grasp, T_obj_world=RigidTransform(from_frame='obj', to_frame='world'),
@@ -118,12 +118,12 @@ class DexNetVisualizer3D(Visualizer3D):
             dimension of the table
         """
         if stable_pose is None:
-            Visualizer3D.mesh(obj.mesh, color=object_color, style=style)
+            Visualizer3D.mesh(obj.mesh.trimesh, color=object_color, style=style)
             T_obj_world = RigidTransform(from_frame='obj',
                                          to_frame='world')
         elif isinstance(stable_pose, StablePose):
-            T_obj_world = Visualizer3D.mesh_stable_pose(obj.mesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
+            T_obj_world = Visualizer3D.mesh_stable_pose(obj.mesh.trimesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
         else:
-            T_obj_world = Visualizer3D.mesh_table(obj.mesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
+            T_obj_world = Visualizer3D.mesh_table(obj.mesh.trimesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
         DexNetVisualizer3D.gripper(gripper, grasp, T_obj_world, color=gripper_color)
 

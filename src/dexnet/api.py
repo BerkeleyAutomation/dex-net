@@ -553,8 +553,7 @@ class DexNet(object):
         Parameters
         ----------
         object_name : :obj:`str`
-            Ob
-            ject to display.
+            Object to display.
         config : :obj:`dict`
             Configuration dict for visualization.
             Parameters are in Other parameters. Values from self.default_config are used for keys not provided.
@@ -581,7 +580,7 @@ class DexNet(object):
         obj = self.dataset[object_name]
 
         vis.figure(bgcolor=(1,1,1), size=(1000,1000))
-        vis.mesh(obj.mesh, color=(0.5, 0.5, 0.5), style='surface')
+        vis.mesh(obj.mesh.trimesh, color=(0.5, 0.5, 0.5), style='surface')
         vis.show(animate=config['animate'])
 
     def display_stable_poses(self, object_name, config=None):
@@ -620,7 +619,7 @@ class DexNet(object):
         for stable_pose in stable_poses:
             print 'Stable pose %s with p=%.3f' %(stable_pose.id, stable_pose.p)
             vis.figure()
-            vis.mesh_stable_pose(obj.mesh, stable_pose,
+            vis.mesh_stable_pose(obj.mesh.trimesh, stable_pose,
                                  color=(0.5, 0.5, 0.5), style='surface')
             vis.pose(RigidTransform(), alpha=0.15)
             vis.show(animate=config['animate'])
@@ -712,7 +711,7 @@ class DexNet(object):
         else:
             i = 0
             vis.figure()
-            vis.mesh(object.mesh, style='surface')
+            vis.mesh(object.mesh.trimesh, style='surface')
             for grasp, metric in zip(grasps, metrics):
                 if metric <= config['min_metric']:
                     continue                 

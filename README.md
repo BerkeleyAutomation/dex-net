@@ -7,6 +7,14 @@
 
 [RSS Paper](https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_rss2017_final.pdf)
 
+## Updates
+As of Jan 1, 2018 the AUTOLAB visualization module uses the [trimesh](https://github.com/mikedh/trimesh) library instead of [meshpy](https://github.com/BerkeleyAutomation/meshpy).
+Version mismatches between cloned libraries may lead to exceptions when using the CLI.
+If you experience visualization errors, please run `git pull origin master` from the dex-net, meshpy, and visualization repositories and try again.
+
+We are currently working on migrating dex-net to use [trimesh](https://github.com/mikedh/trimesh) and improving the installation procedure.
+We hope to release a new version by May 2018.
+
 ## Overview
 The dex-net Python package is for opening, reading, and writing HDF5 databases of 3D object models, parallel-jaw grasps, and grasp robustness metrics.
 
