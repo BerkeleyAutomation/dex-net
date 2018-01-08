@@ -428,7 +428,8 @@ class ParallelJawPtGrasp3D(PointGrasp):
 
         # check for contact along approach
         if check_approach:
-            num_approach_samples = int(Grasp.samples_per_grid * approach_dist / 2) # at least 1 sample per grid
+            approach_dist_grid = obj.sdf.transform_pt_obj_to_grid(approach_dist)
+            num_approach_samples = int(Grasp.samples_per_grid * approach_dist_grid / 2) # at least 1 sample per grid
             approach_axis = self.rotated_full_axis[:,0]
             approach_loa1 = ParallelJawPtGrasp3D.create_line_of_action(g1_world, -approach_axis, approach_dist, obj,
                                                                        num_approach_samples, min_width = 0)
