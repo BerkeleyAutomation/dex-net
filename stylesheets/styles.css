@@ -254,7 +254,8 @@ h1.header {
 	font-weight: 300;
 	line-height: 1.3em;
 	border-bottom: none;
-	margin-top: 0;
+	margin-top: -10px;
+  margin-bottom: -10px;
   font-weight: bold;
 }
 
@@ -262,7 +263,8 @@ h2.header {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 24px;
   line-height: 1.3em;
-  margin-top: 0;
+  margin-top: -5px;
+  margin-bottom: -5px;
   font-weight: bold;
 }
 
@@ -338,7 +340,7 @@ li.download:hover {
 a.buttons {
 	-webkit-font-smoothing: antialiased;
 	font-weight: bold;
-	padding: 2px 2px 2px 22px;
+	padding: 2px 2px 2px 12px;
 	height: 30px;
   color: #FFFFFF;
 }

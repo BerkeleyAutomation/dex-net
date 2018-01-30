@@ -32,6 +32,7 @@
         <h2 class="header">Publications</h2>
         <p class="header"></p>
         <ul>
+          <li class="download"><a class="buttons" href="#dexnet_21">Bin Picking</a></li>
           <li class="download"><a class="buttons" href="#dexnet_3">Dex-Net 3.0</a></li>
           <li class="download"><a class="buttons" href="#dexnet_2">Dex-Net 2.0</a></li>
           <li class="download"><a class="buttons" href="#dexnet_1">Dex-Net 1.0</a></li>
@@ -47,10 +48,10 @@
         <h2 class="header">Data</h2>
         <p class="header"></p>
         <ul>
-          <li class="download"><a class="buttons" href="http://bit.ly/2rIM7Jk">GQ-CNN Training</a></li>
-          <li class="download"><a class="buttons" href="http://bit.ly/2tAFMko">GQ-CNN Weights</a></li>
+          <li class="download"><a class="buttons" href="http://bit.ly/2rIM7Jk">Training Datasets</a></li>
+          <li class="download"><a class="buttons" href="http://bit.ly/2tAFMko">Pretrained Models</a></li>
 	  <li class="download"><a class="buttons" href="http://bit.ly/2tLnRrQ">Object Meshes</a></li>
-          <li class="download"><a class="buttons" href="http://bit.ly/2vb3OCz">HDF5 Databases</a></li>
+          <li class="download"><a class="buttons" href="http://bit.ly/2vb3OCz">Grasp Databases</a></li>
         </ul>
 
         <p class="header">
@@ -61,7 +62,7 @@
       
       <html>
       <body>
-      <iframe width="650" height="355" src="https://www.youtube.com/embed/i6K3GI2_EgU" frameborder="0" allowfullscreen></iframe>
+      <iframe width="620" height="340" src="https://www.youtube.com/embed/i6K3GI2_EgU" frameborder="0" allowfullscreen></iframe>
       </body>
       </html>
 
@@ -70,10 +71,11 @@
       The broader goal of the Dex-Net project is to develop highly reliable robot grasping across a wide variety of rigid objects such as tools, household items, packaged goods, and industrial parts.
       </p>
       <p>
-      <a href="#dexnet_2">Dex-Net 2.0</a> is designed for learning Grasp Quality Convolutional Neural Network (GQ-CNN) models that predict the probability of success of candidate parallel-jaw grasps on objects from point clouds.
+      <a href="#dexnet_2">Dex-Net 2.0</a> is designed to generated training datasets to learn Grasp Quality Convolutional Neural Networks (GQ-CNN) models that predict the probability of success of candidate parallel-jaw grasps on objects from point clouds.
       GQ-CNNs may be useful for quickly planning grasps that can lift and transport a wide variety of objects a physical robot.
+      <a href="#dexnet_21">Dex-Net 2.1</a> adds dynamic simulation with <a href="https://pypi.python.org/pypi/pybullet">pybullet</a> and extends the robust grasping model to the sequential task of bin picking.
       <a href="#dexnet_3">Dex-Net 3.0</a> adds support for suction-based end-effectors.
-      <a href="#dexnet_1">Dex-Net 1.0</a> was designed for learning predictors of grasp success for new 3D mesh models to accelerate generation of new datasets.
+      <a href="#dexnet_1">Dex-Net 1.0</a> was designed for distributed robust grasp analysis in the Cloud across datasets of over 10,000 3D mesh models.
       </p>
       <p>
       The project was created by <a href="http://www.jeff-mahler.com">Jeff Mahler</a> and <a href="http://goldberg.berkeley.edu">Prof. Ken Goldberg</a> and is currently maintained by the <a href="http://autolab.berkeley.edu/">Berkeley AUTOLAB</a>.
@@ -114,6 +116,35 @@
       <li> <a href="https://www.technologyreview.com/s/607931/meet-the-most-nimble-fingered-robot-yet/?utm_campaign=add_this&utm_source=twitter&utm_medium=post">MIT Technology Review. May 25, 2017.</a> </li>
       <li> <a href="https://www.fastcompany.com/3066863/robot-revolution/why-its-so-hard-for-robots-to-get-a-grip">Fast Company. Jan 12, 2017.</a> </li>
       </ul>
+      </p>
+
+      </section>
+
+      <section>
+
+      <h2 class="header" id="dexnet_21" ><font color="black">Learning Deep Policies for Robot Bin Picking by Simulating Robust Grasping Sequences</font></h2>
+      <h4 class="header"><font color="black">Jeffrey Mahler, Ken Goldberg</font></h4>
+      <h5 class="header"><font color="black"> To Appear at the First Conference on Robot Learning (CoRL) 2017 </b> </font></h5>
+      <p>
+      [<a href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_bin_picking_corl2017.pdf">Paper</a>]
+      [<a href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_corl2017_supplement.pdf">Supplement</a>]
+      [<a href="http://bit.ly/2ysvubx">Training Datasets</a>]
+      [<a href="http://bit.ly/2tAFMko">Trained GQ-CNNs</a>]
+      [<a href="http://bit.ly/2xQgGyX">Experiments</a>]
+      [<a href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_corl2017.bib">Bibtex</a>]
+      </p>
+
+      <center>
+      <div class="image">
+      <img src="images/dexnet_bin_picking_teaser.png?raw=true" alt="Image cannot be displayed" width="90%">
+      </div>
+      </center>
+
+      <h3>
+      <a class="anchor" haria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+      <p>
+      Recent results suggest that it is possible to grasp a variety of singulated objects with high precision using Convolutional Neural Networks (CNNs)trained on synthetic data. This paper considers the task of bin picking, where multiple objects are randomly arranged in a heap and the objective is to sequentially grasp and transport each into a packing box. We model bin picking with a discrete-time Partially Observable Markov Decision Process that specifies states of the heap, point cloud observations, and rewards. We collect synthetic demonstrations of bin picking from an algorithmic supervisor uses full state information to optimize for the most robust collision-free grasp in a forward simulator based on pybullet to model dynamic object-object interactions and robust wrench space analysis from the Dexterity Network (Dex-Net) to model quasi-static contact between the gripper and object. We learn a policy by fine-tuning a Grasp Quality CNN on Dex-Net 2.1 to classify the supervisor's actions from a dataset of 10,000 rollouts of the supervisor in the simulator with noise injection. In 2,192 physical trials of bin picking with an ABB YuMi on a dataset of 50 novel objects, we find that the resulting policies can achieve 94% success rate and 96% average precision (very few false positives) on heaps of 5-10 objects and can clear heaps of 10 objects in under three minutes.
       </p>
 
       </section>
@@ -239,10 +270,10 @@
       <h2 class="header" id="contact"><font color="black">Contributors</font></h2>
 
       <p>This is an ongoing project at UC Berkeley with active contributions from:<br>
-      <a href="http://www.jeff-mahler.com">Jeff Mahler</a>, Vishal Satish, Alan Li, Matt Matl, Jacky Liang, Xinyu Liu, and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
+      <a href="http://www.jeff-mahler.com">Jeff Mahler</a>, Matt Matl, Bill DeRose, Jacky Liang, Alan Li, Vishal Satish, and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
 
       <p>Past contributors include:<br>
-      <a href="http://www.cs.berkeley.edu/~ftpokorny/">Florian Pokorny</a>, Brian Hou, Sherdil Niyaz, Melrose Roderkick, <a href="http://imagine.enpc.fr/~aubrym/index.html">Mathieu Aubry</a>, Michael Laskey, Richard Doan, Brenton Chu, Raul Puri, Sahanna Suri, Nikhil Sharma, and Josh Price.</p>
+      <a href="http://www.cs.berkeley.edu/~ftpokorny/">Florian Pokorny</a>, Brian Hou, Sherdil Niyaz, Xinyu Liu, Melrose Roderkick, <a href="http://imagine.enpc.fr/~aubrym/index.html">Mathieu Aubry</a>, Michael Laskey, Richard Doan, Brenton Chu, Raul Puri, Sahanna Suri, Nikhil Sharma, and Josh Price.</p>
 
       <h3>
       <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
