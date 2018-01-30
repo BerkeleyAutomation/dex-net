@@ -30,6 +30,8 @@ See [the documentation](https://berkeleyautomation.github.io/dex-net/code.html) 
 ## Datasets
 The Dex-Net Object Mesh Dataset v1.1 and Dex-Net 2.0 HDF5 database can be downloaded from [the data repository](http://bit.ly/2uh07i9).
 
+Custom datasets can now be generated using the script tools/generate_gqcnn_dataset.py
+
 ## Usage
 The code is available under the Apache 2.0 license. If you use this code in a publication, please cite:
 
@@ -40,6 +42,6 @@ The repository currently supports our custom ABB YuMi gripper.
 If you are interested in additional parallel-jaw grippers, please email Jeff Mahler (jmahler@berkeley.edu) with the subject line: "Interested in Contributing to the Dex-Net Grippers" with a description of the parallel-jaw gripper you'd like to add.
 
 ## Custom Database Generation
-The current Dex-Net API does not support the creation of new databases of objects. We plan to release this functionality via an HTTP service in Fall 2017.
-
-If you are interested in using this functionality for research, see [the custom-databases branch](https://github.com/BerkeleyAutomation/dex-net/tree/custom-databases). However, we cannot provide support at this time.
+The master Dex-Net API does not support the creation of new databases of objects. 
+If you are interested in using this functionality for research, see [the custom-databases branch](https://github.com/BerkeleyAutomation/dex-net/tree/custom-databases).
+However, we cannot provide support at this time.
