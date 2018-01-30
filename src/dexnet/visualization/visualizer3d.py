@@ -102,7 +102,7 @@ class DexNetVisualizer3D(Visualizer3D):
             grasp to plot the gripper in
         obj : :obj:`dexnet.grasping.GraspableObject3D`
             3D object to plot the gripper on
-        stable_pose : :obj:`meshpy.StablePose` or :obj:`autolab_core.RigidTransform`
+        stable_pose : :obj:`autolab_core.RigidTransform`
             stable pose of the object on a planar worksurface
         T_table_world : :obj:`autolab_core.RigidTransform`
             pose of table, specified as a transformation from mesh frame to world frame
@@ -121,9 +121,7 @@ class DexNetVisualizer3D(Visualizer3D):
             Visualizer3D.mesh(obj.mesh.trimesh, color=object_color, style=style)
             T_obj_world = RigidTransform(from_frame='obj',
                                          to_frame='world')
-        elif isinstance(stable_pose, StablePose):
-            T_obj_world = Visualizer3D.mesh_stable_pose(obj.mesh.trimesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
         else:
-            T_obj_world = Visualizer3D.mesh_table(obj.mesh.trimesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
+            T_obj_world = Visualizer3D.mesh_stable_pose(obj.mesh.trimesh, stable_pose, T_table_world=T_table_world, color=object_color, style=style, plot_table=plot_table, dim=table_dim)
         DexNetVisualizer3D.gripper(gripper, grasp, T_obj_world, color=gripper_color)
 
