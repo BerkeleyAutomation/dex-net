@@ -27,15 +27,17 @@ Created and maintained by the [AUTOLAB at UC Berkeley](https://autolab.berkeley.
 ## Installation
 See [the documentation](https://berkeleyautomation.github.io/dex-net/code.html) for installation instructions and API Documentation.
 
+## Usage
+As of Feb. 1, 2018, the code is licensed according to the UC Berkeley Copyright and Disclaimer Notice.
+The code is available for educational, research, and not-for-profit purposes (for full details, see LICENSE).
+If you use this code in a publication, please cite:
+
+Mahler, Jeffrey, Jacky Liang, Sherdil Niyaz, Michael Laskey, Richard Doan, Xinyu Liu, Juan Aparicio Ojea, and Ken Goldberg. "Dex-Net 2.0: Deep Learning to Plan Robust Grasps with Synthetic Point Clouds and Analytic Grasp Metrics." Robotics: Science and Systems (2017). Boston, MA.
+
 ## Datasets
 The Dex-Net Object Mesh Dataset v1.1 and Dex-Net 2.0 HDF5 database can be downloaded from [the data repository](http://bit.ly/2uh07i9).
 
 Custom datasets can now be generated using the script tools/generate_gqcnn_dataset.py
-
-## Usage
-The code is available under the Apache 2.0 license. If you use this code in a publication, please cite:
-
-Mahler, Jeffrey, Jacky Liang, Sherdil Niyaz, Michael Laskey, Richard Doan, Xinyu Liu, Juan Aparicio Ojea, and Ken Goldberg. "Dex-Net 2.0: Deep Learning to Plan Robust Grasps with Synthetic Point Clouds and Analytic Grasp Metrics." Robotics: Science and Systems (2017). Boston, MA.
 
 ## Parallel-Jaw Grippers
 The repository currently supports our custom ABB YuMi gripper.
