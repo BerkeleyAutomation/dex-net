@@ -32,7 +32,7 @@ requirements = [
 ]
 
 setup(name='dex-net',
-      version='0.1.dev0',
+      version='0.2.0',
       description='Dex-Net project code',
       author='Jeff Mahler',
       author_email='jmahler@berkeley.edu',
