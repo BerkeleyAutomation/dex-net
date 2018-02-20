@@ -115,15 +115,18 @@ class Completer(object):
 class DexNet_cli(object):
     API = {0: ('Open a database', 'open_database'),
            1: ('Open a dataset', 'open_dataset'),
-           2: ('Display object', 'display_object'),
-           3: ('Display stable poses for object', 'display_stable_poses'),
-           4: ('Display grasps for object', 'display_grasps'),
-           5: ('Generate simulation data for object', 'compute_simulation_data'),
-           6: ('Compute metadata', 'compute_metadata'),
-           7:('Display metadata', 'display_metadata'),
-           8:('Export objects', 'export_objects'),
-           9:('Set config (advanced)', 'set_config'),
-           10:('Quit', 'close')
+           2: ('Add object(s) to the dataset', 'add_objects'),
+           3: ('Sample grasps', 'sample_grasps'),
+           4: ('Compute metrics', 'compute_metrics'),
+           5: ('Display object', 'display_object'),
+           6: ('Display stable poses for object', 'display_stable_poses'),
+           7: ('Display grasps for object', 'display_grasps'),
+           8: ('Generate simulation data for object', 'compute_simulation_data'),
+           9: ('Compute metadata', 'compute_metadata'),
+           10:('Display metadata', 'display_metadata'),
+           11:('Export objects', 'export_objects'),
+           12:('Set config (advanced)', 'set_config'),
+           13:('Quit', 'close')
            }
 
     def __init__(self):
@@ -223,7 +226,10 @@ class DexNet_cli(object):
             database_name += dexnet.HDF5_EXT
         if not os.path.exists(database_name) and not os.path.exists(database_name):
             print('Database {} does not exist'.format(database_name))
-            return True
+            create_new = self._get_yn_input("Create new db?")
+            if not create_new:
+                print("Aborting database creation")
+                return True
         try:
             self.dexnet_api.open_database(database_name, create_db=True)
             print('Opened database %s' %(database_name))
@@ -256,7 +262,10 @@ class DexNet_cli(object):
         if dataset_name is None: return True
         if dataset_name not in existing_datasets:
             print('Dataset {} does not exist'.format(dataset_name))
-            return True
+            create_new = self._get_yn_input("Create new dataset?")
+            if not create_new:
+                print("Aborting dataset creation")
+                return True
         try:
             self.dexnet_api.open_dataset(dataset_name)
             print('Opened dataset {}'.format(dataset_name))
@@ -265,6 +274,27 @@ class DexNet_cli(object):
             print("Opening dataset failed: {}".format(str(e)))
         return True
 
+    def add_objects(self):
+        """ Add objects """
+        if not self._check_opens(): return True
+        
+        object_path = self._get_checked_input(lambda x: os.path.splitext(x)[1] in SUPPORTED_MESH_FORMATS + [''],
+                                           "path to a mesh file or directory")
+        if object_path is None: return True
+        object_path = os.path.realpath(object_path)
+        if os.path.isdir(object_path):
+            obj_filenames = [object_path + "/" + fname for fname in os.listdir(object_path)
+                             if os.path.splitext(fname)[1] in SUPPORTED_MESH_FORMATS]
+        else:
+            obj_filenames = [object_path]
+        for obj_filename in obj_filenames:
+            print("Creating graspable for {}".format(obj_filename))
+            try:
+                self.dexnet_api.add_object(obj_filename)
+            except Exception as e:
+                print("Adding object failed: {}".format(str(e)))
+        return True
+    
     def compute_simulation_data(self):
         """ Preprocesses an object for simulation. """
         if not self._check_opens(): return True
@@ -283,6 +313,45 @@ class DexNet_cli(object):
                 print("Computing simulation preprocessing failed: {}".format(str(e)))
         return True
 
+    def sample_grasps(self):
+        """ Sample grasps for an object or the entire dataset """
+        if not self._check_opens(): return True
+        grippers = self.dexnet_api.list_grippers()
+        gripper_name = self._get_fixed_input(grippers + [''], "gripper name [ENTER for all grippers]")
+        if gripper_name is None: return True
+        objects = self.dexnet_api.list_objects()
+        object_name = self._get_fixed_input(objects + [''], "object key [ENTER for entire dataset]")
+        if object_name is None: return True
+        
+        try:
+            self.dexnet_api.sample_grasps(object_name=None if object_name is '' else object_name,
+                                          gripper_name=None if gripper_name is '' else gripper_name)
+        except Exception as e:
+            print("Sampling grasps failed: {}".format(str(e)))
+        return True
+
+    def compute_metrics(self):
+        """ Compute metrics for an object or the entire dataset """
+        if not self._check_opens(): return True
+        grippers = self.dexnet_api.list_grippers()
+        gripper_name = self._get_fixed_input(grippers + [''], "gripper name [ENTER for all grippers]")
+        if gripper_name is None: return True
+        objects = self.dexnet_api.list_objects()
+        object_name = self._get_fixed_input(objects + [''], "object key [ENTER for entire dataset]")
+        if object_name is None: return True
+        metrics = self.dexnet_api.list_metrics()
+        metric_name = self._get_fixed_input(metrics + [''], "metric name [ENTER for all metrics]")
+        if metric_name is None: return True
+        
+        try:
+            self.dexnet_api.compute_metrics(metric_name=None if metric_name is '' else metric_name,
+                                            object_name=None if object_name is '' else object_name,
+                                            gripper_name=None if gripper_name is '' else gripper_name)
+        except Exception as e:
+            print("Computing metrics failed: {}".format(str(e)))
+        
+        return True
+    
     def compute_metadata(self):
         """ Compute metadata for an object or the entire dataset """
         if not self._check_opens(): return True
@@ -385,6 +454,19 @@ class DexNet_cli(object):
             print("Display grasps failed: {}".format(str(e)))
         return True
 
+    def delete_object(self):
+        """ Delete an object """
+        if not self._check_opens(): return True
+        objects = self.dexnet_api.list_objects()
+        object_name = self._get_fixed_input(objects, "object key")
+        if object_name is None: return True
+        
+        try:
+            self.dexnet_api.delete_object(object_name)
+        except Exception as e:
+            print("Delete object failed: {}".format(str(e)))
+        return True
+
     def set_config(self):
         """ Set fields in default config """
         config_dict = self.dexnet_api.default_config.config
@@ -455,4 +537,3 @@ if __name__ == '__main__':
 
         # get user input
         continue_dexnet = dexnet_cli.run_user_command()
-
