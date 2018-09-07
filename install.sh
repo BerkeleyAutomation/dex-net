@@ -34,12 +34,13 @@ ros)
 	exit 1
 esac
 
+'''
 # install apt deps
 sudo apt-get install cmake libvtk5-dev python-vtk python-sip python-qt4 libosmesa6-dev meshlab libhdf5-dev
 
 # install pip deps
 pip install numpy scipy scikit-learn scikit-image opencv-python pyassimp tensorflow h5py mayavi matplotlib catkin_pkg multiprocess dill cvxopt ipython pillow pyhull setproctitle trimesh
-
+'''
 # install deps from source
 mkdir deps
 cd deps
@@ -78,22 +79,22 @@ in
 python)
 	# autolab_core
 	cd autolab_core
-	python setup.py develop
+	python setup.py develop --user
 	cd ..
 
 	# perception
 	cd perception
-	python setup.py develop
+	python setup.py develop --user
 	cd ..
 
 	# gqcnn
 	cd gqcnn
-	python setup.py develop
+	python setup.py develop --user
 	cd ..
 
 	# visualization
 	cd visualization
-	python setup.py develop
+	python setup.py develop --user
 	cd ..
 	cd ..
 	;;
@@ -110,4 +111,4 @@ ros)
 esac
 
 # install dex-net
-python setup.py develop
+python setup.py develop --user

@@ -237,6 +237,12 @@ class UniformGraspSampler(GraspSampler):
         """
         # get all surface points
         surface_points, _ = graspable.sdf.surface_points(grid_basis=False)
+
+        #for s in surface_points:
+        #    print(s)
+        #print("center: {}; origin: {}".format(graspable.sdf.center,graspable.sdf.origin))
+        #print("CoM: {}".format(graspable.mesh.center_of_mass))
+
         num_surface = surface_points.shape[0]
         i = 0
         grasps = []
@@ -260,6 +266,11 @@ class UniformGraspSampler(GraspSampler):
                 if success:
                     grasps.append(g)
             i += 1
+
+        """
+        for g in grasps:
+            g.center = g.center + graspable.sdf.center 
+        """
 
         return grasps
 
@@ -506,6 +517,7 @@ class AntipodalGraspSampler(GraspSampler):
 
                     # check friction cone
                     if PointGraspMetrics3D.force_closure(c1, c2, self.friction_coef):
+                        grasp.center = grasp.center + graspable.sdf.center
                         grasps.append(grasp)
 
         # randomly sample max num grasps from total list

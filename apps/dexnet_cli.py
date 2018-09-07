@@ -33,6 +33,8 @@ import readline
 import signal
 import dexnet
 
+from autolab_core import YamlConfig
+
 DEFAULT_CONFIG = 'cfg/apps/cli_parameters.yaml'
 SUPPORTED_MESH_FORMATS = ['.obj', '.off', '.wrl', '.stl']
 RE_SPACE = re.compile('.*\s+$', re.M)
@@ -138,6 +140,12 @@ class DexNet_cli(object):
         readline.set_completer_delims(' \t\n;')
         readline.parse_and_bind("tab: complete")
         readline.set_completer(self.comp.complete)
+
+        # Open default config
+        try:
+            self.config = YamlConfig(DEFAULT_CONFIG)
+        except Exception as e:
+            print("Could not open config: {}".format(str(e)))
 
         # display welcome message
         self.display_welcome()
@@ -324,8 +332,10 @@ class DexNet_cli(object):
         if object_name is None: return True
         
         try:
-            self.dexnet_api.sample_grasps(object_name=None if object_name is '' else object_name,
-                                          gripper_name=None if gripper_name is '' else gripper_name)
+            self.dexnet_api.sample_grasps( \
+                object_name=None if object_name is '' else object_name,
+                gripper_name=None if gripper_name is '' else gripper_name,
+                config=self.config)
         except Exception as e:
             print("Sampling grasps failed: {}".format(str(e)))
         return True
@@ -449,7 +459,7 @@ class DexNet_cli(object):
         if metric_name is None: return True
         
         try:
-            self.dexnet_api.display_grasps(object_name, gripper_name, metric_name)
+            self.dexnet_api.display_grasps(object_name, gripper_name, metric_name, config=self.config)
         except Exception as e:
             print("Display grasps failed: {}".format(str(e)))
         return True
