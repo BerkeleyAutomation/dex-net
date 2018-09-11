@@ -341,8 +341,8 @@ class DexNet(object):
             _, root = os.path.split(filepath)
             name, _ = os.path.splitext(root)
         if name in self.dataset.object_keys:
-            raise RuntimeError('An object with key %s already exists. ' +
-                               'Delete the object with delete_graspable first if replacing it'.format(name))
+            raise RuntimeError('An object with key {} already exists\n'.format(name) + \
+                'Delete the object with delete_graspable first if replacing it')
         
         if mass is None or config['use_default_mass']:
             mass = config['default_mass']
@@ -1078,6 +1078,10 @@ class DexNet(object):
                 color = plt.get_cmap('hsv')(q_to_c(metric))[:-1]
                 T_obj_gripper = grasp.gripper_pose(gripper)
                 grasp = grasp.perpendicular_table(stable_pose)
+
+                # Hack
+                grasp.center = grasp.center + object.sdf.center
+                
                 vis.figure()
                 vis.gripper_on_object(gripper, grasp, object,
                                       gripper_color=(0.25,0.25,0.25),
@@ -1100,6 +1104,10 @@ class DexNet(object):
                                              to_frame='world')
                 color = plt.get_cmap('hsv')(q_to_c(metric))[:-1]
                 T_obj_gripper = grasp.gripper_pose(gripper)
+
+                # Hack
+                grasp.center = grasp.center + object.sdf.center
+
                 vis.grasp(grasp, grasp_axis_color=color,
                           endpoint_color=color)
                 i += 1

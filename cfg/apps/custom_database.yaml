@@ -41,7 +41,7 @@ stp_min_prob: 0.00
 
 
 # Visualization params
-show_gripper: True
+show_gripper: False
 max_plot_gripper: 100
 min_metric: -0.01
 table_extent: 0.15
@@ -65,7 +65,6 @@ grasp_samples_per_surface_point: 2
 max_num_surface_points: 100
 min_contact_dist: 0.0025
 dir_prior: 1.0
-
 
 # Metric params
 quality_scale: 0.3

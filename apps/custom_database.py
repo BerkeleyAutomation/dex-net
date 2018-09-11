@@ -7,16 +7,20 @@ import dexnet
 from autolab_core import YamlConfig
 import os
 
+import dexnet.grasping.gripper as gr
+
 # Default database file path
 DEFAULT_DB_PATH = 'kit_tmp.db.hdf5'
 # Default database configuration file path
 DEFAULT_CFG = 'cfg/apps/custom_database.yaml'
 # Default object directory
 DEFAULT_OBJ_PATH = '/home/borrego/dataset/'
-# Default grasp output filename
-DEFAULT_OUT = 'out.yml'
+# Default gripper name
+DEFAULT_GRIPPER = 'yumi_metal_spline'
 # Default dataset name
 DEFAULT_DS = 'kit'
+# Default grasp output filename
+DEFAULT_OUT = 'out.yml'
 
 # Supported mesh file extensions
 SUPPORTED_MESH_FORMATS = ['.obj', '.off', '.wrl', '.stl']
@@ -34,7 +38,7 @@ class CreateDBUtil(object):
     obj_name = "Seal_800_tex"
 
     self.addObjects(DEFAULT_DS, DEFAULT_OBJ_PATH, self.cfg)
-    self.api.sample_grasps(config=self.cfg, object_name=obj_name, gripper_name="baxter")
+    self.api.sample_grasps(config=self.cfg, object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
     
     #self.exportGrasps(DEFAULT_OUT)
 
@@ -42,11 +46,24 @@ class CreateDBUtil(object):
 
     #self.api.display_object(first, config=self.cfg)
 
-    self.api.compute_metrics(config=self.cfg, metric_name="force_closure", object_name=obj_name, gripper_name="baxter")
+    self.api.compute_metrics(config=self.cfg, metric_name="force_closure", object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
     #self.api.display_stable_poses('000', config=self.cfg)
-    self.api.display_grasps(obj_name, 'baxter', 'force_closure', config=self.cfg)
+
+    self.fixGrasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
+
+    self.api.display_grasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
 
     self.api.close_database()
+
+  def fixGrasps(self, object_name, metric, gripper, config):
+    """ Fix grasps incorrect TF
+    """
+    graspable = self.api.dataset[object_name]
+    grasps, _ = self.api.get_grasps(object_name, gripper, metric)
+    
+    # Hack: Add graspable center
+    for grasp in grasps:
+      grasp.center = grasp.center + graspable.sdf.center
 
   def addObjects(self, dataset, object_path, config=None):
     """ Adds objects to the currently active dataset
