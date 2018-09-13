@@ -10,15 +10,15 @@ import os
 import dexnet.grasping.gripper as gr
 
 # Default database file path
-DEFAULT_DB_PATH = 'kit_tmp.db.hdf5'
+DEFAULT_DB_PATH = 'random.db.hdf5'
 # Default database configuration file path
 DEFAULT_CFG = 'cfg/apps/custom_database.yaml'
 # Default object directory
 DEFAULT_OBJ_PATH = '/home/borrego/dataset/'
 # Default gripper name
-DEFAULT_GRIPPER = 'yumi_metal_spline'
+DEFAULT_GRIPPER = 'baxter'
 # Default dataset name
-DEFAULT_DS = 'kit'
+DEFAULT_DS = 'random_objects'
 # Default grasp output filename
 DEFAULT_OUT = 'out.yml'
 
@@ -34,36 +34,22 @@ class CreateDBUtil(object):
     self.cfg = YamlConfig(DEFAULT_CFG)
     self.api.open_database(DEFAULT_DB_PATH, create_db=True)
     self.api.open_dataset(DEFAULT_DS, self.cfg, create_ds=True)
-    
-    obj_name = "Seal_800_tex"
 
     self.addObjects(DEFAULT_DS, DEFAULT_OBJ_PATH, self.cfg)
-    self.api.sample_grasps(config=self.cfg, object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
+
+    #obj_name = "Seal_800_tex"
+    #self.api.sample_grasps(config=self.cfg, object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
     
     #self.exportGrasps(DEFAULT_OUT)
 
     # first = self.api.list_objects()[0]
 
     #self.api.display_object(first, config=self.cfg)
-
-    self.api.compute_metrics(config=self.cfg, metric_name="force_closure", object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
+    #self.api.compute_metrics(config=self.cfg, metric_name="force_closure", object_name=obj_name, gripper_name=DEFAULT_GRIPPER)
     #self.api.display_stable_poses('000', config=self.cfg)
-
-    self.fixGrasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
-
-    self.api.display_grasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
+    #self.api.display_grasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
 
     self.api.close_database()
-
-  def fixGrasps(self, object_name, metric, gripper, config):
-    """ Fix grasps incorrect TF
-    """
-    graspable = self.api.dataset[object_name]
-    grasps, _ = self.api.get_grasps(object_name, gripper, metric)
-    
-    # Hack: Add graspable center
-    for grasp in grasps:
-      grasp.center = grasp.center + graspable.sdf.center
 
   def addObjects(self, dataset, object_path, config=None):
     """ Adds objects to the currently active dataset
@@ -74,7 +60,7 @@ class CreateDBUtil(object):
     # Google random object dataset
     if dataset == 'random_objects':
 
-        for i in range(0, 1):
+        for i in range(0, 1000):
 
           obj_name = "{0:0>3}".format(i)
           obj_filename = '{name}.{ext}'.format(name=obj_name, ext='obj')
@@ -93,8 +79,7 @@ class CreateDBUtil(object):
 
         for obj_path in files:
             try:
-              if obj_path == '/home/borrego/dataset/kit/Seal_800_tex.obj':
-                self.api.add_object(obj_path, config)
+              self.api.add_object(obj_path, config)
             except Exception as e:
                 print("Adding object failed: {}".format(str(e)))
 

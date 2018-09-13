@@ -523,12 +523,3 @@ class AntipodalGraspSampler(GraspSampler):
         # randomly sample max num grasps from total list
         random.shuffle(grasps)
         return grasps
-
-
-
-
-
-
-
-
-

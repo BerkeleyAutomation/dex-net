@@ -24,7 +24,7 @@ use_uniform_com: True
 # Rescale objects
 rescale_objects: True
 # Target scale
-obj_target_scale: 0.040
+obj_target_scale: 0.050
 # Scaling mode
 obj_scaling_mode: 'min'
 
@@ -41,7 +41,7 @@ stp_min_prob: 0.00
 
 
 # Visualization params
-show_gripper: False
+show_gripper: True
 max_plot_gripper: 100
 min_metric: -0.01
 table_extent: 0.15
