@@ -96,7 +96,7 @@ class CreateDBUtil(object):
 
       data = dict(
         object = dict(
-          name = obj_name,
+          name = str(obj_name),
           grasp_candidates = dict()
         )
       )
@@ -105,7 +105,7 @@ class CreateDBUtil(object):
       for i, grasp in enumerate(self.api.get_grasps(obj_name, gripper_name)):
         data['object']['grasp_candidates'][gripper_name][i] = dict()
         data['object']['grasp_candidates'][gripper_name][i]['tf'] = \
-          grasp.gripper_pose().matrix.flatten().tolist()
+          grasp.gripper_pose().matrix.flatten().tolist()[0:12]
 
       with open(out_name, 'w') as outfile:
         yaml.dump(data, outfile, default_flow_style=False)
