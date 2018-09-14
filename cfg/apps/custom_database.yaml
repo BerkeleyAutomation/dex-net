@@ -55,7 +55,8 @@ export_overwrite: True
 # Grasp Sampling
 
 grasp_sampler: 'antipodal'
-target_num_grasps: 10
+target_num_grasps: 100
+# Unused
 num_grasp_rots: 32
 
 sampling_friction_coef: 0.5
