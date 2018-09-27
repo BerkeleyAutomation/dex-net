@@ -9,6 +9,8 @@ import os
 import time
 import yaml
 
+import dexnet.grasping.gripper as gr
+
 # Multiprocess
 import multiprocessing as mp
 from functools import partial
@@ -26,7 +28,7 @@ DEFAULT_GRIPPER = 'baxter'
 DEFAULT_DS = 'kit'
 #DEFAULT_DS = 'random_objects'
 # Default grasp output directory
-DEFAULT_OUT = 'out'
+DEFAULT_OUT = 'OUT/default'
 
 class CreateDBUtil(object):
 
@@ -40,16 +42,30 @@ class CreateDBUtil(object):
 
     #self.addObjects(DEFAULT_DS, DEFAULT_OBJ_PATH, self.cfg)
     #obj_name = self.api.list_objects()[0]
-    #self.api.sample_grasps(config=self.cfg, object_name=None, gripper_name=DEFAULT_GRIPPER)
 
-    self.exportGrasps(DEFAULT_GRIPPER, DEFAULT_OUT)
+    #for object_name in self.api.list_objects():
+    #  obj = self.api.dataset[object_name]
+    #  obj.stable_poses_ = obj.mesh_.stable_poses(min_prob=self.cfg['stp_min_prob'])
+    #  self.api.dataset.store_stable_poses(object_name, obj.stable_poses_, force_overwrite=True)
 
-    #self.api.compute_metrics(config=self.cfg, object_name=None, metric_name="force_closure", gripper_name=DEFAULT_GRIPPER)
+    #for i in range(500, 1000):
+    #  object_name = '{0:0>3}_coll'.format(i)
+    #  self.api.sample_grasps(config=self.cfg, object_name=object_name, gripper_name=DEFAULT_GRIPPER)
+
+    self.exportGrasps(DEFAULT_GRIPPER, DEFAULT_OUT, self.cfg)
+
+    #for i in range(0, 1000):
+    #  object_name = '{0:0>3}_coll'.format(i)
+    #for object_name in self.api.list_objects():
+    #  self.api.compute_metrics(config=self.cfg, object_name=object_name, metric_name="force_closure", gripper_name=DEFAULT_GRIPPER)
 
     #self.api.display_object(obj_name, config=self.cfg)
     #self.api.display_stable_poses('000', config=self.cfg)
     #for obj_name in self.api.list_objects():
-    #  self.api.display_grasps(obj_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
+    
+    #for i in range(0, 1000, 5):
+    #  object_name = '{0:0>3}_coll'.format(i)
+    #  self.api.display_grasps(object_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
 
     self.api.close_database()
 
@@ -86,9 +102,11 @@ class CreateDBUtil(object):
                 print("Adding object failed: {}".format(str(e)))
 
 
-  def exportGrasps(self, gripper_name, out_dir):
+  def exportGrasps(self, gripper_name, out_dir, config=None):
     """ Exports grasp comfigurations to file
     """
+
+    gripper = gr.RobotGripper.load(gripper_name, gripper_dir=config['gripper_dir'])
 
     for obj_name in self.api.list_objects():
 
@@ -105,7 +123,7 @@ class CreateDBUtil(object):
       for i, grasp in enumerate(self.api.get_grasps(obj_name, gripper_name)):
         data['object']['grasp_candidates'][gripper_name][i] = dict()
         data['object']['grasp_candidates'][gripper_name][i]['tf'] = \
-          grasp.gripper_pose().matrix.flatten().tolist()[0:12]
+          grasp.gripper_pose(gripper).matrix.flatten().tolist()[0:12]
 
       with open(out_name, 'w') as outfile:
         yaml.dump(data, outfile, default_flow_style=False)

@@ -37,7 +37,7 @@ sdf_dim: 100
 # Sdf grid boundary padding
 sdf_padding: 5
 # Minimum probability for stored stable poses
-stp_min_prob: 0.00
+stp_min_prob: -0.01
 
 
 # Visualization params

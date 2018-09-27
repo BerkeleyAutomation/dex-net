@@ -122,7 +122,7 @@ class DexNet(object):
         for key in ['gripper_dir', 'cache_dir']:
             if not os.path.isabs(self.default_config[key]):
                 self.default_config[key] = os.path.realpath(DEXNET_DIR + self.default_config[key])
-    
+
     #TODO
     #Move to YamlConfig
     @staticmethod
@@ -1077,14 +1077,16 @@ class DexNet(object):
                                              to_frame='world')
                 color = plt.get_cmap('hsv')(q_to_c(metric))[:-1]
                 T_obj_gripper = grasp.gripper_pose(gripper)
-                grasp = grasp.perpendicular_table(stable_pose)
+                #grasp = grasp.perpendicular_table(stable_pose)
                 
                 vis.figure()
                 vis.gripper_on_object(gripper, grasp, object,
-                                      gripper_color=(0.25,0.25,0.25),
+                                      gripper_color=color,
+                                      object_color=(0.9,0.9,0.9),
                                       stable_pose=stable_pose.T_obj_world,
-                                      plot_table=False)
+                                      plot_table=True)
                 vis.show(animate=config['animate'])
+
                 i += 1
                 if i >= config['max_plot_gripper']:
                     break
