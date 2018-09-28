@@ -1067,7 +1067,7 @@ class DexNet(object):
 
         if config['show_gripper']:
             i = 0
-            stable_pose = self.dataset.stable_pose(object.key, 'pose_1')
+            stable_pose = self.dataset.stable_pose(object.key, 'pose_0')
             for grasp, metric in zip(grasps, metrics):
                 if metric <= config['min_metric']:
                     continue                 
@@ -1077,7 +1077,7 @@ class DexNet(object):
                                              to_frame='world')
                 color = plt.get_cmap('hsv')(q_to_c(metric))[:-1]
                 T_obj_gripper = grasp.gripper_pose(gripper)
-                #grasp = grasp.perpendicular_table(stable_pose)
+                grasp = grasp.perpendicular_table(stable_pose)
                 
                 vis.figure()
                 vis.gripper_on_object(gripper, grasp, object,

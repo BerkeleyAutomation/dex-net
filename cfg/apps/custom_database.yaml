@@ -1,3 +1,24 @@
+#
+# Custom database tools
+#
+
+# Path to database hdf5
+#db_path: ws_kit.db.hdf5
+db_path: ws_random_coll.db.hdf5
+# Dataset name
+#ds_name: kit
+ds_name: random_objects
+# Object directory
+obj_path: /home/borrego/dataset
+# Gripper name
+gripper: baxter
+# Input stable poses directory
+#in_stable_poses_dir: ../kit/rest
+in_stable_poses_dir: ../random/rest
+# Output grasp directory
+#out_grasps_dir: ../kit/grasps
+out_grasps_dir: ../random/grasps
+
 # Grasping params (relative paths for gripper_dir and cache_dir are resolved relative to dex-net root)
 
 # Add object params

@@ -8,16 +8,12 @@ from autolab_core import YamlConfig
 import os
 import time
 import yaml
-
+import numpy as np
 import dexnet.grasping.gripper as gr
 
-# Multiprocess
-import multiprocessing as mp
-from functools import partial
+# Stable pose
+from meshpy import StablePose 
 
-# Default database file path
-DEFAULT_DB_PATH = 'ws_kit.db.hdf5'
-#DEFAULT_DB_PATH = 'ws_random_coll.db.hdf5'
 # Default database configuration file path
 DEFAULT_CFG = 'cfg/apps/custom_database.yaml'
 # Default object directory
@@ -25,10 +21,10 @@ DEFAULT_OBJ_PATH = '/home/borrego/dataset/'
 # Default gripper name
 DEFAULT_GRIPPER = 'baxter'
 # Default dataset name
-DEFAULT_DS = 'kit'
-#DEFAULT_DS = 'random_objects'
+#DEFAULT_DS = 'kit'
+DEFAULT_DS = 'random_objects'
 # Default grasp output directory
-DEFAULT_OUT = 'OUT/default'
+DEFAULT_OUT = '../OUT/random'
 
 class CreateDBUtil(object):
 
@@ -37,10 +33,10 @@ class CreateDBUtil(object):
     """    
     self.api = dexnet.DexNet()
     self.cfg = YamlConfig(DEFAULT_CFG)
-    self.api.open_database(DEFAULT_DB_PATH, create_db=True)
-    self.api.open_dataset(DEFAULT_DS, self.cfg, create_ds=True)
+    self.api.open_database(self.cfg['db_path'], create_db=True)
+    self.api.open_dataset(self.cfg['ds_name'], self.cfg, create_ds=True)
 
-    #self.addObjects(DEFAULT_DS, DEFAULT_OBJ_PATH, self.cfg)
+    #self.addObjects(self.cfg['ds_name'], self.cfg['obj_path'], self.cfg)
     #obj_name = self.api.list_objects()[0]
 
     #for object_name in self.api.list_objects():
@@ -50,9 +46,11 @@ class CreateDBUtil(object):
 
     #for i in range(500, 1000):
     #  object_name = '{0:0>3}_coll'.format(i)
-    #  self.api.sample_grasps(config=self.cfg, object_name=object_name, gripper_name=DEFAULT_GRIPPER)
+    #  self.api.sample_grasps(config=self.cfg, object_name=object_name, gripper_name=self.cfg['gripper'])
 
-    self.exportGrasps(DEFAULT_GRIPPER, DEFAULT_OUT, self.cfg)
+    #self.importStablePoses(self.cfg['in_stable_poses_dir'], self.cfg)
+    self.exportGrasps(self.cfg['gripper'], self.cfg['out_grasps_dir'], self.cfg)
+
 
     #for i in range(0, 1000):
     #  object_name = '{0:0>3}_coll'.format(i)
@@ -65,15 +63,15 @@ class CreateDBUtil(object):
     
     #for i in range(0, 1000, 5):
     #  object_name = '{0:0>3}_coll'.format(i)
-    #  self.api.display_grasps(object_name, DEFAULT_GRIPPER, 'force_closure', config=self.cfg)
+    #  self.api.display_grasps(object_name, self.cfg['gripper'], 'force_closure', config=self.cfg)
 
     self.api.close_database()
 
-  def addObjects(self, dataset, object_path, config=None):
+  def addObjects(self, dataset, object_path, config):
     """ Adds objects to the currently active dataset
     """
 
-    dataset_path = os.path.join(DEFAULT_OBJ_PATH, dataset)
+    dataset_path = os.path.join(config['ds_name'], dataset)
 
     # Google random object dataset
     if dataset == 'random_objects':
@@ -102,7 +100,7 @@ class CreateDBUtil(object):
                 print("Adding object failed: {}".format(str(e)))
 
 
-  def exportGrasps(self, gripper_name, out_dir, config=None):
+  def exportGrasps(self, gripper_name, out_dir, config):
     """ Exports grasp comfigurations to file
     """
 
@@ -121,12 +119,45 @@ class CreateDBUtil(object):
       data['object']['grasp_candidates'][gripper_name] = dict()
 
       for i, grasp in enumerate(self.api.get_grasps(obj_name, gripper_name)):
+        
+        stable_pose = self.api.dataset.stable_pose(obj_name, 'pose_0')
+        corrected_grasp = grasp.perpendicular_table(stable_pose)
+        grasp_pose = corrected_grasp.gripper_pose(gripper)
+        
         data['object']['grasp_candidates'][gripper_name][i] = dict()
         data['object']['grasp_candidates'][gripper_name][i]['tf'] = \
-          grasp.gripper_pose(gripper).matrix.flatten().tolist()[0:12]
+          grasp_pose.matrix.flatten().tolist()[0:12]
 
       with open(out_name, 'w') as outfile:
         yaml.dump(data, outfile, default_flow_style=False)
+
+  def importStablePoses(self, in_dir, config):
+    ''' Import stable poses from external files to HDF5 database
+    '''
+
+    prob = 1.0
+
+    for obj_name in self.api.list_objects():
+
+      stable_poses = []
+
+      in_name = os.path.join(in_dir, '{}.rest.yml'.format(obj_name))
+      data = []
+
+      with open(in_name, 'r') as f:
+        data = yaml.load(f)      
+        for i in range(len(data[obj_name]['tf'])):
+          mat = data[obj_name]['tf'][i]
+          rot = np.array([ mat[0:3], mat[4:7], mat[8:11] ])
+          x0 = np.array([ mat[3], mat[7], mat[11] ])
+          stable_pose = StablePose(prob, rot, x0, stp_id='pose_{}'.format(i))
+          stable_poses.append(stable_pose)
+
+      self.api.dataset.store_stable_poses(obj_name, stable_poses, force_overwrite=True)
+
+  def importMetrics(self, in_dir, metric_name, config=None):
+    print("TODO")
+
 
 def main(argv):
   """ Main executable function
