@@ -103,10 +103,11 @@ class DexNetVisualizer3D(Visualizer3D):
         center_tf = T_obj_world.apply(center)
         grasp_axis_tf = np.array([g1_tf.data, g2_tf.data])
 
-        mlab.points3d(g1_tf.data[0], g1_tf.data[1], g1_tf.data[2], color=endpoint_color, scale_factor=endpoint_scale)
-        mlab.points3d(g2_tf.data[0], g2_tf.data[1], g2_tf.data[2], color=endpoint_color, scale_factor=endpoint_scale)
+        Visualizer3D.points(g1_tf, color=endpoint_color, scale=endpoint_scale)
+        Visualizer3D.points(g2_tf, color=endpoint_color, scale=endpoint_scale)
 
-        mlab.plot3d(grasp_axis_tf[:,0], grasp_axis_tf[:,1], grasp_axis_tf[:,2], color=grasp_axis_color, tube_radius=tube_radius)
+        # See issue in https://github.com/BerkeleyAutomation/dex-net/issues/16
+        #Visualizer3D.plot3d(grasp_axis_tf, color=grasp_axis_color, tube_radius=tube_radius)
 
     @staticmethod
     def gripper_on_object(gripper, grasp, obj, stable_pose=None,

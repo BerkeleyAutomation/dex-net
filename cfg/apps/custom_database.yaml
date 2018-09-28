@@ -1,0 +1,108 @@
+#
+# Custom database tools
+#
+
+# Path to database hdf5
+#db_path: ws_kit.db.hdf5
+db_path: ws_random_coll.db.hdf5
+# Dataset name
+#ds_name: kit
+ds_name: random_objects
+# Object directory
+obj_path: /home/borrego/dataset
+# Gripper name
+gripper: baxter
+# Input stable poses directory
+#in_stable_poses_dir: ../kit/rest
+in_stable_poses_dir: ../random/rest
+# Output grasp directory
+#out_grasps_dir: ../kit/grasps
+out_grasps_dir: ../random/grasps
+
+# Grasping params (relative paths for gripper_dir and cache_dir are resolved relative to dex-net root)
+
+# Add object params
+gripper_dir: 'data/grippers'
+# Number of grasps to compute metrics for before logging a line
+metric_display_rate: 1.0
+# Gravity acceleration
+gravity_accel: 9.8
+
+# Object dataset generation
+
+# Directory for temporary meshes
+#cache_dir: '/home/borrego/Workspace/.cache'
+# Use default object mass
+use_default_mass: True
+# Default object mass
+default_mass: 1.0
+# Object density
+obj_density: 1.0
+# Object scale
+obj_scale: 1.0
+# Use uniform centre of mass
+use_uniform_com: True
+# Rescale objects
+rescale_objects: True
+# Target scale
+obj_target_scale: 0.050
+# Scaling mode
+obj_scaling_mode: 'min'
+
+# SDF generation
+
+# Path to SDFGen binary
+#path_to_sdfgen: '/home/borrego/Workspace/dex-net/deps/SDFGen/bin/SDFGen'
+# Dimensions of signed distance field grid
+sdf_dim: 100
+# Sdf grid boundary padding
+sdf_padding: 5
+# Minimum probability for stored stable poses
+stp_min_prob: -0.01
+
+
+# Visualization params
+show_gripper: True
+max_plot_gripper: 100
+min_metric: -0.01
+table_extent: 0.15
+animate: False
+quality_scale: 1.0
+
+# Object export params
+export_format: 'obj'
+export_overwrite: True
+
+# Grasp Sampling
+
+grasp_sampler: 'antipodal'
+target_num_grasps: 100
+# Unused
+num_grasp_rots: 32
+
+sampling_friction_coef: 0.5
+num_cone_faces: 8
+max_grasp_sampling_iters: 5
+grasp_samples_per_surface_point: 2
+max_num_surface_points: 100
+min_contact_dist: 0.0025
+dir_prior: 1.0
+
+# Metric params
+quality_scale: 0.3
+
+
+metrics:
+  force_closure:
+    quality_method: 'force_closure'
+    friction_coef: 0.5
+    num_cone_faces: 8
+    soft_fingers: 1
+    quality_type: 'quasi_static'
+    all_contacts_required: 1
+    check_approach: False
+
+    # optional deterministic parameters
+    torque_scaling: 0.01
+    wrench_norm_thresh: 0.001
+    wrench_regularizer: 0.0000000001
