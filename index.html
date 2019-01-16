@@ -32,6 +32,7 @@
         <h2 class="header">Publications</h2>
         <p class="header"></p>
         <ul>
+          <li class="download"><a class="buttons" href="#dexnet_4">Dex-Net 4.0</a></li>
           <li class="download"><a class="buttons" href="#dexnet_21">Bin Picking</a></li>
           <li class="download"><a class="buttons" href="#dexnet_3">Dex-Net 3.0</a></li>
           <li class="download"><a class="buttons" href="#dexnet_2">Dex-Net 2.0</a></li>
@@ -75,6 +76,7 @@
       GQ-CNNs may be useful for quickly planning grasps that can lift and transport a wide variety of objects a physical robot.
       <a href="#dexnet_21">Dex-Net 2.1</a> adds dynamic simulation with <a href="https://pypi.python.org/pypi/pybullet">pybullet</a> and extends the robust grasping model to the sequential task of bin picking.
       <a href="#dexnet_3">Dex-Net 3.0</a> adds support for suction-based end-effectors.
+      <a href="#dexnet_4">Dex-Net 4.0</a> unifies the reward metric across multiple grippers so that an ambidextrous policy can be trained efficiently.
       <a href="#dexnet_1">Dex-Net 1.0</a> was designed for distributed robust grasp analysis in the Cloud across datasets of over 10,000 3D mesh models.
       </p>
       <p>
@@ -120,7 +122,45 @@
       </p>
 
       </section>
+      
+      <section>
 
+      <h2 class="header" id="dexnet_4" ><font color="black">Learning Ambidextrous Robot Grasping Policies</font></h2>
+      <h4 class="header"><font color="black">Jeffrey Mahler, Matthew Matl, Vishal Satish, Michael Danielczuk, Bill DeRose, Stephen McKinley, Ken Goldberg</font></h4>
+      <h5 class="header"><font color="black"> <b> Science Robotics </b> </font></h5>
+      <p>
+      [<a href="http://robotics.sciencemag.org/content/4/26/eaau4984">Paper</a>]
+      [<a href="http://robotics.sciencemag.org/content/suppl/2019/01/14/4.26.eaau4984.DC1">Supplement</a>]
+      [<a href="http://bit.ly/2M3Dx1e">Raw Data and Analysis Code</a>]
+      [<a href="http://bit.ly/2M3Dx1e">Experiments</a>]
+      [<a href="http://bit.ly/2wGPsvZ">Experiment Object Listing</a>]
+      [<a href="https://github.com/BerkeleyAutomation/dex-net/raw/gh-pages/docs/dexnet_sciencerobotics2019.bib">Bibtex</a>]
+      </p>
+
+      <html>
+      <body>
+      <iframe width="600" height="340" src="https://www.youtube.com/watch?v=r-0PKne9e_w&feature=youtu.be" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </body>
+      </html>
+
+      <h3>
+      <a class="anchor" haria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+      <p>
+      Universal picking (UP), or reliable robot grasping of a diverse range of novel objects from heaps, is a grand challenge
+      for e-commerce order fulfillment, manufacturing, inspection, and home service robots. Optimizing the rate, reliability,
+      and range of UP is difficult due to inherent uncertainty in sensing, control, and contact physics. This paper explores
+      “ambidextrous” robot grasping, where two or more heterogeneous grippers are used. We present Dexterity Network
+      (Dex-Net) 4.0, a substantial extension to previous versions of Dex-Net that learns policies for a given set of grippers
+      by training on synthetic datasets using domain randomization with analytic models of physics and geometry. We
+      train policies for a parallel-jaw and a vacuum-based suction cup gripper on 5 million synthetic depth images,
+      grasps, and rewards generated from heaps of three-dimensional objects. On a physical robot with two grippers,
+      the Dex-Net 4.0 policy consistently clears bins of up to 25 novel objects with reliability greater than 95% at a rate of
+      more than 300 mean picks per hour.
+      </p>
+
+      </section>
+      
       <section>
 
       <h2 class="header" id="dexnet_21" ><font color="black">Learning Deep Policies for Robot Bin Picking by Simulating Robust Grasping Sequences</font></h2>
@@ -271,7 +311,7 @@
       <h2 class="header" id="contact"><font color="black">Contributors</font></h2>
 
       <p>This is an ongoing project at UC Berkeley with active contributions from:<br>
-      <a href="http://www.jeff-mahler.com">Jeff Mahler</a>, Matt Matl, Bill DeRose, Jacky Liang, Alan Li, Vishal Satish, and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
+      <a href="http://www.jeff-mahler.com">Jeff Mahler</a>, <a href="http://mmatl.github.io">Matt Matl</a>, Bill DeRose, Jacky Liang, Alan Li, Vishal Satish, <a href="http://mjd3.github.io">Mike Danielczuk</a> and <a href="http://goldberg.berkeley.edu">Ken Goldberg</a>.</p>
 
       <p>Past contributors include:<br>
       <a href="http://www.cs.berkeley.edu/~ftpokorny/">Florian Pokorny</a>, Brian Hou, Sherdil Niyaz, Xinyu Liu, Melrose Roderkick, <a href="http://imagine.enpc.fr/~aubrym/index.html">Mathieu Aubry</a>, Michael Laskey, Richard Doan, Brenton Chu, Raul Puri, Sahanna Suri, Nikhil Sharma, and Josh Price.</p>

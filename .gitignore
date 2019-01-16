@@ -93,6 +93,10 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# Jekyll build files
+_site/
+.sass-cache/
+
 # Temp files
 *~
 .#*
@@ -101,4 +105,3 @@ ENV/
 # Random
 .DS_Store
 *.pyc
-
