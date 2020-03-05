@@ -1,5 +1,5 @@
-database: /path/to/your/example.hdf5
+database: /home/snehal/catkin_erdal/src/example.hdf5
 dataset: mini_dexnet
 gripper: yumi_metal_spline
-metric: robust_ferarri_canny
+metric: robust_ferrari_canny
 object: bar_clamp

@@ -32,6 +32,7 @@ import re
 import readline
 import signal
 import dexnet
+#import dexnet.api as de
 
 DEFAULT_CONFIG = 'cfg/apps/cli_parameters.yaml'
 SUPPORTED_MESH_FORMATS = ['.obj', '.off', '.wrl', '.stl']

@@ -63,10 +63,10 @@ from dexnet.database import Hdf5Database
 from dexnet.grasping import GraspCollisionChecker, RobotGripper
 from dexnet.learning import TensorDataset
 
-try:
-    from dexnet.visualization import DexNetVisualizer3D as vis
-except:
-    logging.warning('Failed to import DexNetVisualizer3D, visualization methods will be unavailable')
+#try:
+from dexnet.visualization.visualizer3d import DexNetVisualizer3D as vis
+#except:
+ #   logging.warning('Failed to import DexNetVisualizer3D, visualization methods will be unavailable')
 
 logging.root.name = 'dex-net'
 

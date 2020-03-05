@@ -1,0 +1,24 @@
+<robot name="bar_clamp">
+  <link name="world" />
+  <link name="bar_clamp">
+    <visual>
+       <geometry>
+	  <mesh filename="package://dex-net/urdf/bar_clamp.dae"/>
+	</geometry>
+    </visual>
+    <collision>
+       <geometry>
+	  <mesh filename="package://dex-net/urdf/bar_clamp.dae"/>
+	</geometry>
+    </collision>
+	<inertial>
+		<mass value="0.5"/>
+		<inertia ixx="1" iyy="1" izz="1" ixy="0.0" ixz="0.0" iyz="0.0"/>
+	</inertial>
+  </link>
+
+  <joint name="joint1" type="floating">
+    <parent link="world"/>
+    <child link="bar_clamp"/>
+  </joint>
+</robot>

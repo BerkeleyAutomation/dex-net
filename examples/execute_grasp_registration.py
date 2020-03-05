@@ -40,17 +40,20 @@ metric : str
 object : str
     name of the object to use (in practice instance recognition is necessary to determine the object instance from images)
 """
+import argparse
 import os
-from autolab_core import RigidTransform
+from autolab_core import RigidTransform, YamlConfig 
 from dexnet import DexNet
 from dexnet.grasping import RobotGripper
 
 if __name__ == '__main__':
     # parse args
+    print "Example code started"
     parser = argparse.ArgumentParser(description='Example to demonstrate how to use grasps from a Dex-Net HDF5 database to execute grasps on a physical robot using point cloud registration')
-    arser.add_argument('--config_filename', type=str, default=None, help='configuration file to use')
+    parser.add_argument('--config_filename', type=str, default=None, help='configuration file to use')
     args = parser.parse_args()
     config_filename = args.config_filename
+    print config_filename
 
     # handle config filename
     if config_filename is None:
@@ -61,6 +64,8 @@ if __name__ == '__main__':
     # turn relative paths absolute
     if not os.path.isabs(config_filename):
         config_filename = os.path.join(os.getcwd(), config_filename)
+	print "did it"
+    
 
     # parse config
     config = YamlConfig(config_filename)
@@ -69,6 +74,7 @@ if __name__ == '__main__':
     gripper_name = config['gripper']
     metric_name = config['metric']
     object_name = config['object']
+    print config["database"], config['dataset'], config['gripper'], config['metric'], config['object']
 
     # fake transformation from the camera frame of reference to the robot frame of reference
     # in practice this could be computed by registering the camera to the robot base frame with a chessboard
@@ -87,7 +93,8 @@ if __name__ == '__main__':
 
     # open Dex-Net API
     dexnet_handle = DexNet()
-    dexnet_handle.open_database(database_path)
+    dexnet_handle.open_database(database_name)
+
     dexnet_handle.open_dataset(dataset_name)
 
     # read the most robust grasp

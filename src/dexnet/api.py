@@ -45,11 +45,13 @@ import dexnet.grasping.grasp_quality_function as gqf
 import dexnet.grasping.grasp_sampler as gs
 import dexnet.grasping.gripper as gr
 import dexnet.database.mesh_processor as mp
-from meshpy import convex_decomposition, Mesh3D
-try:
-    from dexnet.visualization import DexNetVisualizer3D as vis
-except:
-    logger.warning('Failed to import DexNetVisualizer3D, visualization methods will be unavailable')
+from meshpy.urdf_writer import convex_decomposition
+from meshpy.mesh import Mesh3D
+
+#try
+from dexnet.visualization.visualizer3d import DexNetVisualizer3D as vis
+#except:
+#logger.warning('Failed to import DexNetVisualizer3D, visualization methods will be unavailable')
 
 DEXNET_DIR = os.path.realpath(os.path.dirname(os.path.realpath(__file__)) + '/../../') + '/'
 DEXNET_API_DEFAULTS_FILE = DEXNET_DIR + 'cfg/api_defaults.yaml'
@@ -719,7 +721,9 @@ class DexNet(object):
                                              to_frame='world')
                 color = plt.get_cmap('hsv')(q_to_c(metric))[:-1]
                 T_obj_gripper = grasp.gripper_pose(gripper)
+		print "T_obj_gripper"
                 grasp = grasp.perpendicular_table(stable_pose)
+		print "grasp"
                 vis.figure()
                 vis.gripper_on_object(gripper, grasp, object,
                                       gripper_color=(0.25,0.25,0.25),

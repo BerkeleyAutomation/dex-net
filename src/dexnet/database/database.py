@@ -939,7 +939,10 @@ class Hdf5Dataset(Dataset):
             return [], []
         
         grasp_metrics = self.grasp_metrics(key, grasps, gripper=gripper, stable_pose_id=stable_pose_id)
-        if metric not in grasp_metrics[grasp_metrics.keys()[0]].keys():
+        a = grasp_metrics[grasp_metrics.keys()[0]].keys()
+	for i in range(0,len(a)):
+		a[i] = a[i].encode('ascii','replace')
+        if metric not in a:  
             raise ValueError('Metric %s not recognized' %(metric))
 
         grasps_and_metrics = [(g, grasp_metrics[g.id][metric]) for g in grasps]
